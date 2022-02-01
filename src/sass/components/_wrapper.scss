@@ -1,0 +1,14 @@
+.wrapper {
+  width: 77%;
+
+  @include medium {
+    width: 90%;
+  }
+
+  @include small {
+    &--header {
+      width: 100%;
+    }
+    width: 87%;
+  }
+}
