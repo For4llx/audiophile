@@ -1,0 +1,31 @@
+.button {
+  margin-top: 1rem;
+  width: fit-content;
+  padding: 0.7rem 1.85rem;
+  border: 1px solid black;
+  color: black;
+  background-color: transparent;
+
+  &:hover {
+    color: white;
+    background-color: black;
+  }
+
+  &--primary {
+    border: 0;
+    color: white;
+    background-color: $color-primary;
+    &:hover {
+      background-color: $color-primary-light;
+    }
+  }
+
+  &--primary-black {
+    border: 0;
+    color: white;
+    background-color: black;
+    &:hover {
+      background-color: #4c4c4c;
+    }
+  }
+}

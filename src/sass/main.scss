@@ -1,4 +1,22 @@
 @import './utils/variables';
 @import './utils/mixins';
+
 @import './base/base';
 @import './base/typography';
+
+@import './components/menu';
+@import './components/link';
+@import './components/button';
+@import './components/hamburger';
+@import './components/social';
+@import './components/icon';
+
+@import './layouts/header';
+@import './layouts/navigation';
+@import './layouts/product';
+@import './layouts/home';
+@import './layouts/categories';
+@import './layouts/showcase';
+@import './layouts/about';
+@import './layouts/toggle';
+@import './layouts/footer';

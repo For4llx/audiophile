@@ -1,0 +1,6 @@
+.link {
+  color: white;
+  &:hover {
+    color: $color-primary;
+  }
+}

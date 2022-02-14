@@ -1,3 +1,13 @@
+.heading {
+  font-family: 'Manrope', sans-serif;
+  text-transform: uppercase;
+  font-weight: 700;
+
+  &--white {
+    color: white;
+  }
+}
+
 h1 {
   font-family: 'Manrope', sans-serif;
   font-weight: 700;
@@ -5,6 +15,10 @@ h1 {
   text-transform: uppercase;
   line-height: 58px;
   letter-spacing: 2px;
+
+  &--white {
+    color: white;
+  }
 
   @include small {
     font-size: 36px;
@@ -64,11 +78,21 @@ h6 {
   letter-spacing: 1px;
 }
 
-p {
+.body {
   font-family: 'Manrope', sans-serif;
   font-weight: 500;
   font-size: 15px;
   line-height: 25px;
+  opacity: 0.5;
+  color: black;
+
+  &--white {
+    color: white;
+    opacity: 0.75;
+  }
+  &--bold {
+    font-weight: 700;
+  }
 }
 
 a {
@@ -96,4 +120,9 @@ a {
   text-transform: uppercase;
   line-height: 19px;
   letter-spacing: 10px;
+
+  &--white {
+    color: white;
+    opacity: 0.5;
+  }
 }

@@ -1,10 +1,11 @@
 <template>
-  <div></div>
+  <nav class="menu">
+    <slot />
+  </nav>
 </template>
 
 <script>
 export default {
-  name: 'App',
-  components: {},
+  name: 'BaseMenu',
 };
 </script>

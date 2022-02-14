@@ -1,0 +1,105 @@
+.showcase {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 3rem;
+  position: relative;
+  width: 100%;
+  margin-top: 10.5rem;
+
+  &__product {
+    &--small {
+      background-image: url('./assets/home/large/image-speaker-zx7.jpg');
+      background-position: center 0;
+      gap: 1rem;
+      background-repeat: no-repeat;
+      background-size: cover;
+      border-radius: $radius;
+      padding: 6.2rem 6rem;
+    }
+
+    &--big {
+      display: flex;
+      justify-content: flex-end;
+      padding: 8.4rem 0 7.9rem;
+      background-color: $color-primary;
+      background-image: url('./assets/home/large/image-speaker-zx9.png'),
+        url('./assets/home/large/pattern-circles.svg');
+      background-size: 377px, 944px;
+      background-position: 139px 117px, -148px -34px;
+      background-repeat: no-repeat;
+      border-radius: $radius;
+    }
+
+    &--split {
+      display: flex;
+      justify-content: space-between;
+      gap: 2rem;
+      &::before {
+        content: '';
+        display: block;
+        background-image: url('./assets/home/large/image-earphones-yx1.jpg');
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-position: center;
+        width: 50%;
+        border-radius: $radius;
+      }
+    }
+  }
+
+  &__item {
+    width: 100%;
+  }
+  @include medium {
+    margin-top: 6rem;
+    gap: 2rem;
+
+    &__product {
+      justify-content: center;
+      &--big {
+        text-align: center;
+        background-size: 180px, 944px;
+        background-position: center 62px, center -289px;
+        padding: 22rem 0 4.2rem 0;
+      }
+      &--small {
+        padding: 6.2rem 4rem;
+        background-image: url('./assets/home/medium/image-speaker-zx7.jpg');
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-position: center;
+      }
+      &--split {
+        gap: 0.8rem;
+        &::before {
+          background-image: url('./assets/home/medium/image-earphones-yx1.jpg');
+        }
+      }
+    }
+  }
+  @include small {
+    margin-top: 7.2rem;
+    gap: 1.5rem;
+    &__product {
+      &--big {
+        padding: 18rem 0 2.8rem 0;
+        text-align: center;
+        background-size: 155px, 944px;
+      }
+      &--small {
+        padding: 6.2rem 2rem;
+        background-image: url('./assets/home/small/image-speaker-zx7.jpg');
+      }
+      &--split {
+        flex-direction: column;
+        gap: 1rem;
+        &::before {
+          background-image: url('./assets/home/medium/image-earphones-yx1.jpg');
+          height: 12rem;
+          width: 100%;
+        }
+      }
+    }
+  }
+}

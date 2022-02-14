@@ -1,0 +1,10 @@
+.toggle {
+  @include medium {
+    position: relative;
+    &__menu {
+      position: absolute;
+      top: 6rem;
+      z-index: 1;
+    }
+  }
+}
