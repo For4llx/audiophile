@@ -7,10 +7,16 @@
       </button>
       <BaseMenu class="toggle__menu">
         <ul class="menu__inner menu__inner--toggle">
-          <li class="menu__item"><a class="link">Home</a></li>
-          <li class="menu__item"><a class="link">Headphones</a></li>
-          <li class="menu__item"><a class="link">Speakers</a></li>
-          <li class="menu__item"><a class="link">Earphones</a></li>
+          <li class="menu__item"><router-link to="/" class="link">Home</router-link></li>
+          <li class="menu__item">
+            <router-link to="/headphones" class="link">Headphones</router-link>
+          </li>
+          <li class="menu__item">
+            <router-link to="/speakers" class="link">Speakers</router-link>
+          </li>
+          <li class="menu__item">
+            <router-link to="/earphones" class="link">Earphones</router-link>
+          </li>
         </ul>
       </BaseMenu>
     </div>
