@@ -34,6 +34,7 @@
         color: var(--white);
         opacity: 75%;
         width: 349px;
+        @include body;
     }
 
     &__button {

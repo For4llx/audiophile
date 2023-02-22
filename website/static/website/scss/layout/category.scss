@@ -1,0 +1,86 @@
+@use "../abstracts/index" as *;
+
+.category {
+    @include container;
+
+    &__menu {
+        display: flex;
+        gap: 2rem;
+    }
+
+    &__item {
+        width: 100%;
+    }
+
+    &__link {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 1rem;
+        border-radius: var(--radius);
+        color: var(--black);
+        position: relative;
+        padding: 8rem 2rem 2rem 2rem;
+        background-color: hsl(0, 0, 94%, 100%);
+        @include h6;
+
+        &::before {
+            content: "";
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: contain;
+            display: block;
+            width: 100%;
+            height: 100%;
+            position: absolute;
+            top: -70px;
+        }
+
+        &--headphones {
+            &::before {
+                background-image: url("/static/website/assets/shared/desktop/image-category-thumbnail-headphones.png");
+            }
+        }
+
+        &--speakers {
+            &::before {
+                background-image: url("/static/website/assets/shared/desktop/image-category-thumbnail-speakers.png");
+            }
+        }
+
+        &--earphones {
+            &::before {
+                background-image: url("/static/website/assets/shared/desktop/image-category-thumbnail-earphones.png");
+            }
+        }
+
+        &:hover {
+            .category__button {
+                color: var(--primary);
+            }
+        }
+    }
+
+    &__button {
+        color: hsla(0%, 0%, 50%, );
+        font-size: 13px;
+
+        &:after {
+            content: url("/static/website/assets/shared/desktop/icon-arrow-right.svg");
+            margin-left: 13px;
+        }
+    }
+
+    @include medium {
+        &__menu {
+            gap: 0.5rem;
+        }
+    }
+
+    @include small {
+        &__menu {
+            gap: 6rem;
+            flex-direction: column;
+        }
+    }
+}
