@@ -6,6 +6,12 @@
     justify-content: space-between;
     position: relative;
     gap: 2rem;
+    padding-top: 2rem;
+    padding-bottom: 2rem;
+
+    &--border-bottom {
+        border-bottom: 1px solid hsl(0, 0, 50%, 100%);
+    }
 
     &__hamburger {
         display: none;

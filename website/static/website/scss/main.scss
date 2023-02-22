@@ -2,6 +2,10 @@
 
 @use "utils/variables";
 
+
+@use "component/button";
+
 @use "layout/header";
 @use "layout/navigation";
 @use "layout/menu";
+@use "layout/card";

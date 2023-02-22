@@ -1,0 +1,40 @@
+.button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    width: 160px;
+    height: 48px;
+    font-size: 13px;
+    text-transform: uppercase;
+
+    &--primary {
+        background-color: var(--primary);
+        color: var(--white);
+
+        &:hover {
+            background-color: var(--primary-light);
+        }
+    }
+
+    &--secondary {
+        background-color: var(--white);
+        border: 1px solid var(--black);
+        color: var(--black);
+
+        &:hover {
+            background-color: var(--black);
+            color: var(--white);
+        }
+    }
+
+    /*    &--tertiary {
+        color: hsla(0%, 0%, 50%, );
+
+        &:after {
+            content: url("/static/audiophile_site/assets/shared/desktop/icon-arrow-right.svg");
+            margin-left: 13px;
+        }
+    }
+*/
+}

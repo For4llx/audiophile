@@ -1,0 +1,61 @@
+@use "../abstracts/index" as *;
+
+.card {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 24px;
+    border-radius: 0 0 var(--radius) var(--radius);
+    @include container;
+
+    &--hero {
+        display: flex;
+        background-image: url("/static/website/assets/home/desktop/image-hero.jpg");
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-position: center;
+        height: 729px;
+    }
+
+    &__title {
+        display: flex;
+        flex-direction: column;
+        color: var(--white);
+        @include h1;
+    }
+
+    &__overline {
+        color: var(--white);
+        opacity: 50%;
+        @include overline;
+    }
+
+    &__description {
+        color: var(--white);
+        opacity: 75%;
+        width: 349px;
+    }
+
+    &__button {
+        margin-top: 16px;
+    }
+
+    @include medium {
+        &--hero {
+            align-items: center;
+            text-align: center;
+            background-image: url("/static/website/assets/home/tablet/image-header.jpg");
+        }
+    }
+
+    @include small {
+        &--hero {
+            height: 600px;
+            background-image: url("/static/website/assets/home/mobile/image-header.jpg");
+        }
+
+        &__title {
+            @include h2;
+        }
+    }
+}

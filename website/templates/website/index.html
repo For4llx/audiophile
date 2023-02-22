@@ -13,8 +13,8 @@
   <title>Frontend Mentor | Audiophile e-commerce website</title>
 </head>
 <body>
-  <header class="header header--border-bottom container">
-    <nav class="navigation">
+  <header class="header">
+    <nav class="navigation navigation--border-bottom">
       <button class="navigation__hamburger">
         <img src="{% static "website/assets/shared/tablet/icon-hamburger.svg" %}" alt="menu" />
       </button>
@@ -32,13 +32,21 @@
       </button>
     </nav>
   </header>
-
-  New product
-  XX99 Mark II Headphones
-  Experience natural, lifelike audio and exceptional build quality made for the passionate music enthusiast.
+  <article class="card card--hero">
+    <p class="card__overline">New product</p>
+    <h1 class="card__title">
+      <span>XX99 Mark II</span>
+      <span>Headphones</span>
+    </h1>
+    <p class="card__description">
+      Experience natural, lifelike audio and exceptional 
+      build quality made for the passionatemusic enthusiast.
+    </p>
+    <button class="button button--primary card__button">
+      See product
+    </button>
+  </article>
   
-  See product
-
   Headphones
   Shop
 
