@@ -13,19 +13,19 @@
   <title>Frontend Mentor | Audiophile e-commerce website</title>
 </head>
 <body>
-  <header>
-    <nav>
-      <button>
+  <header class="header header--border-bottom container">
+    <nav class="navigation">
+      <button class="navigation__hamburger">
         <img src="{% static "website/assets/shared/tablet/icon-hamburger.svg" %}" alt="menu" />
       </button>
       <figure>
         <img src="{% static "website/assets/shared/desktop/logo.svg" %}" alt="Audiophile's logo" />
       </figure>
-      <ul>
-        <li><a href="#">Home</a></li>
-        <li><a href="#">Headphones</a></li>
-        <li><a href="#">Speakers</a></li>
-        <li><a href="#">Earphones</a></li>
+      <ul class="menu">
+        <li><a class="menu__link" href="#">Home</a></li>
+        <li><a class="menu__link" href="#">Headphones</a></li>
+        <li><a class="menu__link" href="#">Speakers</a></li>
+        <li><a class="menu__link" href="#">Earphones</a></li>
       </ul>
       <button>
         <img src="{% static "website/assets/shared/desktop/icon-cart.svg" %}" alt="Cart icon" />

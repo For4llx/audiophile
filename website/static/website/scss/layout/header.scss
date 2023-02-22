@@ -1,0 +1,12 @@
+@use "../abstracts/index" as *;
+
+.header {
+    padding-top: 2rem;
+    padding-bottom: 2rem;
+    background-color: var(--black);
+    @include container;
+
+    &--border-bottom {
+        border-bottom: 1px solid hsl(0, 0, 50%, 100%);
+    }
+}

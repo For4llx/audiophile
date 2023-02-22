@@ -1,0 +1,15 @@
+@use "../abstracts/" as *;
+
+.menu {
+    display: flex;
+    gap: 2rem;
+
+    &__link {
+        color: var(--white);
+        @include subtitle;
+
+        &:hover {
+            color: var(--primary);
+        }
+    }
+}

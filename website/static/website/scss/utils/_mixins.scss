@@ -77,6 +77,13 @@
     line-height: 25px;
 }
 
+@mixin container {
+    box-sizing: border-box;
+    width: 100%;
+    padding-left: max(calc(50% - var(--container) / 2), 2rem);
+    padding-right: max(calc(50% - var(--container) / 2), 2rem);
+}
+
 @mixin small {
     @media screen and (max-width: 480px) {
         @content;
