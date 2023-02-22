@@ -12,4 +12,8 @@
             color: var(--primary);
         }
     }
+
+    @include medium {
+        display: none;
+    }
 }
