@@ -13,10 +13,25 @@
   <title>Frontend Mentor | Audiophile e-commerce website</title>
 </head>
 <body>
-  Home
-  Headphones
-  Speakers
-  Earphones
+  <header>
+    <nav>
+      <button>
+        <img src="{% static "website/assets/shared/tablet/icon-hamburger.svg" %}" alt="menu" />
+      </button>
+      <figure>
+        <img src="{% static "website/assets/shared/desktop/logo.svg" %}" alt="Audiophile's logo" />
+      </figure>
+      <ul>
+        <li><a href="#">Home</a></li>
+        <li><a href="#">Headphones</a></li>
+        <li><a href="#">Speakers</a></li>
+        <li><a href="#">Earphones</a></li>
+      </ul>
+      <button>
+        <img src="{% static "website/assets/shared/desktop/icon-cart.svg" %}" alt="Cart icon" />
+      </button>
+    </nav>
+  </header>
 
   New product
   XX99 Mark II Headphones
