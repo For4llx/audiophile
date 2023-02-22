@@ -23,4 +23,12 @@
             right: 0;
         }
     }
+
+    @include small {
+        justify-content: space-between;
+
+        &__cart {
+            position: unset;
+        }
+    }
 }
