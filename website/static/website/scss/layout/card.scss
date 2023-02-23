@@ -20,8 +20,16 @@
     &__title {
         display: flex;
         flex-direction: column;
-        color: var(--white);
-        @include h1;
+
+        &--h1 {
+            color: var(--white);
+            @include h1;
+        }
+
+        &--h4 {
+            color: var(--black);
+            @include h4;
+        }
     }
 
     &__overline {
@@ -57,7 +65,9 @@
         }
 
         &__title {
-            @include h2;
+            &--h1 {
+                @include h2;
+            }
         }
     }
 }

@@ -2,19 +2,38 @@
 
 .home-gallery {
     @include container;
+    display: grid;
+    gap: 2rem;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(3, 1fr);
 
     &__item {
         display: flex;
-        justify-content: flex-end;
-        background-color: var(--primary);
-        padding: 8rem;
-        border-radius: var(--radius);
-        background-image: url("/static/website/assets/home/desktop/image-speaker-zx9.png"), url("/static/website/assets/home/desktop/pattern-circles.svg");
-        background-repeat: no-repeat, no-repeat;
-        background-size: 410px 493px, 944px;
         width: 100%;
-        height: 100%;
-        background-position: 117px 96px, -149px -96px;
+        border-radius: var(--radius);
+
+        &--first {
+            padding: 8rem;
+            grid-column: 1 / 3;
+            justify-content: flex-end;
+            background-color: var(--primary);
+            background-image: url("/static/website/assets/home/desktop/image-speaker-zx9.png"), url("/static/website/assets/home/desktop/pattern-circles.svg");
+            background-repeat: no-repeat, no-repeat;
+            background-size: 410px 493px, 944px;
+            background-position: 117px 96px, -149px -96px;
+        }
+
+        &--second {
+            grid-column: 1 / 3;
+            justify-content: flex-start;
+            background-image: url("/static/website/assets/home/desktop/image-speaker-zx7.jpg");
+            background-repeat: no-repeat;
+            background-size: cover;
+            background-position: center;
+            height: 320px;
+            padding-left: calc(260px - 165px);
+        }
+
     }
 
     &__card {
@@ -25,16 +44,40 @@
 
     @include medium {
         &__item {
-            display: flex;
-            justify-content: center;
-            background-position: center 52px, center -278px;
-            background-size: 197px 237px, 944px;
-            height: 720px;
-            padding: 4rem;
+            &--first {
+                display: flex;
+                justify-content: center;
+                background-position: center 52px, center -278px;
+                background-size: 197px 237px, 944px;
+                height: 720px;
+                padding: 4rem;
+            }
+
+            &--second {
+                background-image: url("/static/website/assets/home/tablet/image-speaker-zx7.jpg");
+            }
         }
 
         &__card {
-            justify-content: flex-end;
+            &--first {
+                justify-content: flex-end;
+            }
+        }
+    }
+
+    @include small {
+
+        &__card {
+            &--second {
+                align-items: flex-start;
+            }
+        }
+
+        &__item {
+            &--second {
+                padding: 2rem;
+                background-image: url("/static/website/assets/home/mobile/image-speaker-zx7.jpg");
+            }
         }
     }
 }
