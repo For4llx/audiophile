@@ -18,13 +18,11 @@
     }
 
     &--secondary {
-        background-color: var(--white);
-        border: 1px solid var(--black);
-        color: var(--black);
+        background-color: var(--black);
+        color: var(--white);
 
         &:hover {
-            background-color: var(--black);
-            color: var(--white);
+            background-color: #4C4C4C;
         }
     }
 }
