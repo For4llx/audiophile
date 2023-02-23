@@ -22,21 +22,19 @@
         width: fit-content;
         position: relative;
     }
-}
 
-/* 
-    position: relative;
+    @include medium {
+        &__item {
+            display: flex;
+            justify-content: center;
+            background-position: center 52px, center -278px;
+            background-size: 197px 237px, 944px;
+            height: 720px;
+            padding: 4rem;
+        }
 
-    &::before {
-        content: "";
-        display: block;
-        position: absolute;
-        left: 0;
-        background-image: url("/static/website/assets/home/desktop/image-speaker-zx9.png"), url("/static/website/assets/home/desktop/pattern-circles.svg");
-        background-position: center, center;
-        background-repeat: no-repeat, no-repeat;
-        background-size: 410px 493px, 944px;
-        width: 100%;
-        height: 100%;
+        &__card {
+            justify-content: flex-end;
+        }
     }
-*/
+}
