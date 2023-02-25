@@ -1,0 +1,6 @@
+@use "../abstracts/index" as *;
+
+.paragraph {
+    opacity: 50%;
+    @include body;
+}

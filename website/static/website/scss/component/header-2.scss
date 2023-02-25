@@ -1,0 +1,5 @@
+@use "../abstracts/index" as *;
+
+.header-2 {
+    @include h2;
+}

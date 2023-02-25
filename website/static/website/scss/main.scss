@@ -4,10 +4,17 @@
 
 
 @use "component/button";
+@use "component/header-2";
+@use "component/paragraph";
+@use "component/emphasis";
+@use "component/image";
 
 @use "layout/header";
 @use "layout/navigation";
 @use "layout/menu";
 @use "layout/card";
 @use "layout/category";
+@use "layout/about";
+@use "layout/article";
+
 @use "pages/home-gallery";

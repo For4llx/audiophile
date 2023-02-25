@@ -1,0 +1,8 @@
+@use "../abstracts/index" as *;
+
+.about {
+    display: flex;
+    justify-content: space-between;
+    gap: 2rem;
+    @include container;
+}
