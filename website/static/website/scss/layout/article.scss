@@ -1,8 +1,8 @@
+@use "../abstracts/index" as *;
+
 .article {
     display: flex;
     flex-direction: column;
     justify-content: center;
     gap: 1.5rem;
-    width: 445px;
-    width: 50%;
 }

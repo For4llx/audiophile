@@ -100,8 +100,8 @@
     </li>
   </ul>
   <section class="about">
-    <article class="article">
-      <h2 class="header-2">
+    <article class="article about__article">
+      <h2 class="header-2 about__title">
         Bringing you the <em class="emphasis">best</em> audio gear
       </h2>
       <p class="paragraph">
@@ -112,7 +112,12 @@
         audio equipment.
       </p>
     </article>
-    <img class="image" src="{% static "website/assets/shared/desktop/image-best-gear.jpg" %}"/>
+    <picture class="picture about__picture">
+      <source class="image" media="(min-width:769px)" srcset="{% static "website/assets/shared/desktop/image-best-gear.jpg" %}"/>
+      <source class="image" media="(min-width:481px)" srcset="{% static "website/assets/shared/tablet/image-best-gear.jpg" %}"/>
+      <source class="image"  srcset="{% static "website/assets/shared/mobile/image-best-gear.jpg" %}"/>
+      <img class="image picture about__picture" src="{% static "website/assets/shared/desktop/image-best-gear.jpg" %}" alt="A young man listening to music" />
+    </picture>
   </section>
 
   Audiophile is an all in one stop to fulfill your audio needs. We're a small team of music lovers 

@@ -1,5 +1,7 @@
+@use "../abstracts/index" as *;
+
 .image {
     border-radius: 8px;
     object-fit: cover;
-    width: 50%;
+    width: 100%;
 }
