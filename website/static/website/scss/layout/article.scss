@@ -5,4 +5,8 @@
     flex-direction: column;
     justify-content: center;
     gap: 1.5rem;
+
+    @include medium {
+        align-items: center;
+    }
 }
