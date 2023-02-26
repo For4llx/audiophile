@@ -4,16 +4,18 @@
     display: flex;
     gap: 2rem;
 
-    &__link {
-        color: var(--white);
-        @include subtitle;
+    @include medium {
+        display: none;
 
-        &:hover {
-            color: var(--primary);
+        &--display {
+            display: flex;
         }
     }
 
-    @include medium {
-        display: none;
+    @include small {
+        &--display {
+            flex-direction: column;
+            align-items: center;
+        }
     }
 }

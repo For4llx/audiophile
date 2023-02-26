@@ -8,6 +8,7 @@
 @use "component/paragraph";
 @use "component/emphasis";
 @use "component/image";
+@use "component/link";
 
 @use "layout/header";
 @use "layout/navigation";
@@ -16,5 +17,8 @@
 @use "layout/category";
 @use "layout/about";
 @use "layout/article";
+@use "layout/main";
+@use "layout/social";
+@use "layout/footer";
 
 @use "pages/home-gallery";
