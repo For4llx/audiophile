@@ -8,6 +8,8 @@
     gap: 2rem;
 
     &--border-bottom {
+        padding-top: 2rem;
+        padding-bottom: 2rem;
         border-bottom: 1px solid hsl(0, 0, 59%, 100%);
     }
 
@@ -30,6 +32,11 @@
 
     @include small {
         justify-content: space-between;
+
+        &--border-bottom {
+            padding-left: 2rem;
+            padding-right: 2rem;
+        }
 
         &__cart {
             position: unset;

@@ -1,9 +1,32 @@
 @use "../abstracts/index" as *;
 
 .header {
-    position: absolute;
-    padding-top: 2rem;
-    padding-bottom: 2rem;
-    background-color: transparent;
+    display: flex;
+    flex-direction: column;
+    gap: 7rem;
+    width: 100%;
     @include container;
+
+    &--hero {
+        background-image: url("/static/website/assets/home/desktop/image-hero.jpg");
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-position: center;
+        height: 729px;
+    }
+
+    @include medium {
+        &--hero {
+            background-image: url("/static/website/assets/home/tablet/image-header.jpg");
+        }
+    }
+
+    @include small {
+        padding-left: 0;
+        padding-right: 0;
+
+        &--hero {
+            background-image: url("/static/website/assets/home/mobile/image-header.jpg");
+        }
+    }
 }

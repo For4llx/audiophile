@@ -6,15 +6,11 @@
     justify-content: center;
     gap: 24px;
     border-radius: 0 0 var(--radius) var(--radius);
-    @include container;
 
     &--hero {
         display: flex;
-        background-image: url("/static/website/assets/home/desktop/image-hero.jpg");
-        background-repeat: no-repeat;
-        background-size: cover;
-        background-position: center;
-        height: 729px;
+        flex-direction: column;
+        justify-content: center;
     }
 
     &__title {
@@ -52,16 +48,11 @@
     @include medium {
         text-align: center;
         align-items: center;
-
-        &--hero {
-            background-image: url("/static/website/assets/home/tablet/image-header.jpg");
-        }
     }
 
     @include small {
         &--hero {
             height: 600px;
-            background-image: url("/static/website/assets/home/mobile/image-header.jpg");
         }
 
         &__title {

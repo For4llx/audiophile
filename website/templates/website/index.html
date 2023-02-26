@@ -13,7 +13,7 @@
   <title>Frontend Mentor | Audiophile e-commerce website</title>
 </head>
 <body>
-  <header class="header">
+  <header class="header header--hero">
     <nav class="navigation navigation--border-bottom">
       <button class="navigation__hamburger">
         <img src="{% static "website/assets/shared/tablet/icon-hamburger.svg" %}" alt="menu" />
@@ -31,8 +31,6 @@
         <img src="{% static "website/assets/shared/desktop/icon-cart.svg" %}" alt="Cart icon" />
       </button>
     </nav>
-  </header>
-  <main class="main">
     <article class="card card--hero">
       <p class="card__overline">New product</p>
       <h1 class="card__title card__title--h1">
@@ -47,6 +45,8 @@
         See product
       </button>
     </article>
+  </header>
+  <main class="main">
     <nav class="category">
       <ul class="category__menu">
         <li class="category__item">
