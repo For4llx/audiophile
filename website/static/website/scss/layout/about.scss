@@ -1,0 +1,38 @@
+@use "../abstracts/index" as *;
+
+.about {
+    display: flex;
+    justify-content: space-between;
+    gap: 2rem;
+    @include container;
+
+    &__picture {
+        width: 50%;
+    }
+
+    &__article {
+        width: 50%;
+    }
+
+    @include medium {
+        align-items: center;
+        flex-direction: column;
+        gap: 2.5rem;
+
+        &__title {
+            max-width: 573px;
+        }
+
+        &__picture {
+            order: 1;
+            width: 100%;
+        }
+
+        &__article {
+            order: 2;
+            text-align: center;
+            width: 100%;
+        }
+
+    }
+}

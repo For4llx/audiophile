@@ -1,0 +1,12 @@
+@use "../abstracts/index" as *;
+
+.link {
+    fill: var(--white);
+    color: var(--white);
+    @include subtitle;
+
+    &:hover {
+        fill: var(--primary);
+        color: var(--primary);
+    }
+}

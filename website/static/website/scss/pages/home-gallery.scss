@@ -1,0 +1,141 @@
+@use "../abstracts/index" as *;
+
+.home-gallery {
+    @include container;
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    grid-template-rows: repeat(3, auto);
+
+    &__item {
+        display: flex;
+        width: 100%;
+        border-radius: var(--radius);
+
+        &--first {
+            padding: 8rem;
+            justify-content: flex-end;
+            background-color: var(--primary);
+            background-image: url("/static/website/assets/home/desktop/image-speaker-zx9.png"), url("/static/website/assets/home/desktop/pattern-circles.svg");
+            background-repeat: no-repeat, no-repeat;
+            background-size: 410px 493px, 944px;
+            background-position: 117px 96px, -149px -96px;
+        }
+
+        &--second {
+            justify-content: flex-start;
+            background-image: url("/static/website/assets/home/desktop/image-speaker-zx7.jpg");
+            background-repeat: no-repeat;
+            background-size: cover;
+            background-position: center;
+            height: 320px;
+            padding-left: calc(260px - 165px);
+        }
+
+        &--third {
+            all: unset;
+            display: flex;
+            justify-content: space-between;
+            grid-column: 1;
+            justify-content: flex-start;
+            height: 320px;
+            gap: 2rem;
+
+            &::before {
+                content: "";
+                background-image: url("/static/website/assets/home/desktop/image-earphones-yx1.jpg");
+                border-radius: var(--radius);
+                display: block;
+                width: 50%;
+                background-size: cover;
+                background-position: center;
+                background-repeat: no-repeat;
+            }
+        }
+
+    }
+
+    &__card {
+        padding: 0;
+        width: fit-content;
+        position: relative;
+
+        &--third {
+            border-radius: var(--radius);
+            padding-left: 95px;
+            width: 50%;
+            background-color: hsl(0, 0, 94%, 100%);
+        }
+    }
+
+    @include medium {
+        &__item {
+            &--first {
+                display: flex;
+                justify-content: center;
+                background-position: center 52px, center -278px;
+                background-size: 197px 237px, 944px;
+                height: 720px;
+                padding: 4rem;
+            }
+
+            &--second {
+                background-image: url("/static/website/assets/home/tablet/image-speaker-zx7.jpg");
+            }
+
+            &--third {
+                &::before {
+                    background-image: url("/static/website/assets/home/tablet/image-earphones-yx1.jpg");
+                }
+            }
+        }
+
+        &__card {
+            &--first {
+                justify-content: flex-end;
+            }
+
+            &--second {
+                text-align: left;
+                align-items: flex-start;
+            }
+
+            &--third {
+                text-align: left;
+                align-items: flex-start;
+                padding-left: 41px;
+            }
+        }
+    }
+
+    @include small {
+
+        &__card {
+            &--second {
+                align-items: flex-start;
+            }
+
+            &--third {
+                width: 100%;
+                min-height: 200px;
+            }
+        }
+
+        &__item {
+            &--second {
+                padding: 2rem;
+                background-image: url("/static/website/assets/home/mobile/image-speaker-zx7.jpg");
+            }
+
+            &--third {
+                flex-direction: column;
+
+                &::before {
+                    background-image: url("/static/website/assets/home/mobile/image-earphones-yx1.jpg");
+                    min-height: 200px;
+                    width: 100%;
+                }
+            }
+        }
+    }
+}

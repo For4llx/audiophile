@@ -1,0 +1,39 @@
+.button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    width: 160px;
+    height: 48px;
+    font-size: 13px;
+    text-transform: uppercase;
+
+    &--primary {
+        background-color: var(--primary);
+        color: var(--white);
+
+        &:hover {
+            background-color: var(--primary-light);
+        }
+    }
+
+    &--primary-black {
+        color: var(--white);
+        background-color: var(--black);
+
+        &:hover {
+            background-color: #4C4C4C;
+        }
+    }
+
+    &--secondary {
+        background-color: transparent;
+        color: var(--black);
+        border: 1px solid var(--black);
+
+        &:hover {
+            color: var(--white);
+            background-color: var(--black);
+        }
+    }
+}

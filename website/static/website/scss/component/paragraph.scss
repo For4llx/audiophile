@@ -1,0 +1,18 @@
+@use "../abstracts/index" as *;
+
+.paragraph {
+    opacity: 50%;
+    @include body;
+
+    &--bold {
+        font-weight: bold;
+    }
+
+    &--white {
+        color: var(--white);
+    }
+
+    &--black {
+        color: var(--black);
+    }
+}

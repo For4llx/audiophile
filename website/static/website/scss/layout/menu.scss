@@ -1,0 +1,21 @@
+@use "../abstracts/" as *;
+
+.menu {
+    display: flex;
+    gap: 2rem;
+
+    @include medium {
+        display: none;
+
+        &--display {
+            display: flex;
+        }
+    }
+
+    @include small {
+        &--display {
+            flex-direction: column;
+            align-items: center;
+        }
+    }
+}

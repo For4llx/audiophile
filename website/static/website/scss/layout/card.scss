@@ -1,0 +1,64 @@
+@use "../abstracts/index" as *;
+
+.card {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 24px;
+    border-radius: 0 0 var(--radius) var(--radius);
+
+    &--hero {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+    }
+
+    &__title {
+        display: flex;
+        flex-direction: column;
+
+        &--h1 {
+            color: var(--white);
+            @include h1;
+        }
+
+        &--h4 {
+            color: var(--black);
+            @include h4;
+        }
+    }
+
+    &__overline {
+        color: var(--white);
+        opacity: 50%;
+        @include overline;
+    }
+
+    &__description {
+        color: var(--white);
+        opacity: 75%;
+        width: 349px;
+        @include body;
+    }
+
+    &__button {
+        margin-top: 16px;
+    }
+
+    @include medium {
+        text-align: center;
+        align-items: center;
+    }
+
+    @include small {
+        &--hero {
+            height: 600px;
+        }
+
+        &__title {
+            &--h1 {
+                @include h2;
+            }
+        }
+    }
+}

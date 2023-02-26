@@ -1,0 +1,45 @@
+@use "../abstracts/" as *;
+
+.navigation {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    position: relative;
+    gap: 2rem;
+
+    &--border-bottom {
+        padding-top: 2rem;
+        padding-bottom: 2rem;
+        border-bottom: 1px solid hsl(0, 0, 59%, 100%);
+    }
+
+    &__hamburger {
+        display: none;
+    }
+
+    @include medium {
+        justify-content: flex-start;
+
+        &__hamburger {
+            display: block;
+        }
+
+        &__cart {
+            position: absolute;
+            right: 0;
+        }
+    }
+
+    @include small {
+        justify-content: space-between;
+
+        &--border-bottom {
+            padding-left: 2rem;
+            padding-right: 2rem;
+        }
+
+        &__cart {
+            position: unset;
+        }
+    }
+}
