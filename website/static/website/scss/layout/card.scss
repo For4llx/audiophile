@@ -1,0 +1,21 @@
+@use "../abstracts/index" as *;
+
+.card {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 2rem;
+    @include container;
+
+    &__picture {
+        max-width: 50%;
+    }
+
+    &__content {
+        max-width: 50%;
+    }
+
+    &__paragraph {
+        max-width: 445px;
+    }
+}

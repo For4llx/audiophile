@@ -35,28 +35,51 @@
   <main class="main">
     <ul>
       <li>
-        <picture>
-          <source class="image" media="(min-width:769px)" src="{% static "products/assets/product-xx99-mark-two-headphones/desktop/image-category-page-preview.jpg" %}" />
-          <source class="image" media="(min-width:481px)" src="{% static "products/assets/product-xx99-mark-two-headphones/tablet/image-category-page-preview.jpg" %}" />
-          <source class="image" src="{% static "products/assets/product-xx99-mark-two-headphones/mobile/image-category-page-preview.jpg" %}" />
-          <img class="image" src="{% static "products/assets/product-xx99-mark-two-headphones/desktop/image-category-page-preview.jpg" %}" />
-        </picture>
         <article class="card">
-          <p class="overline overline--primary">New product</p>
-          <h1 class="card__title">
-            <span>XX99 Mark II</span>
-            <span>Headphones</span>
-          </h1>
-          <p class="paragraph">
-            Experience natural, lifelike audio and exceptional 
-            build quality made for the passionatemusic enthusiast.
-          </p>
-          <button class="button button--primary card__button">
-            See product
-          </button>
+          <picture class="card__picture">
+            <source class="image" media="(min-width:769px)" srcset="{% static "products/assets/product-xx99-mark-two-headphones/desktop/image-category-page-preview.jpg" %}" />
+            <source class="image" media="(min-width:481px)" srcset="{% static "products/assets/product-xx99-mark-two-headphones/tablet/image-category-page-preview.jpg" %}" />
+            <source class="image" srcset="{% static "products/assets/product-xx99-mark-two-headphones/mobile/image-category-page-preview.jpg" %}" />
+            <img class="image" src="{% static "products/assets/product-xx99-mark-two-headphones/desktop/image-category-page-preview.jpg" %}" />
+          </picture>
+          <article class="content card__content">
+            <p class="overline overline--primary">New product</p>
+            <h1 class="h2 content__title">
+              <span>XX99 Mark II</span>
+              <span>Headphones</span>
+            </h1>
+            <p class="paragraph paragraph--black card__paragraph">
+              The new XX99 Mark II headphones is the pinnacle of pristine audio.
+              It redefines your premium headphone experience by reproducing
+              the balanced depth and precision of studio-quality sound.
+            </p>
+            <button class="button button--primary content__button">
+              See product
+            </button>
+          </article>
         </article>
       </li>
     </ul>
+    <section class="about">
+      <article class="article about__article">
+        <h2 class="h2 about__title">
+          Bringing you the <em class="emphasis">best</em> audio gear
+        </h2>
+        <p class="paragraph paragraph--black">
+          Located at the heart of New York City, Audiophile is the premier store for high end headphones, 
+          earphones, speakers, and audio accessories. We have a large showroom and luxury demonstration 
+          rooms available for you to browse and experience a wide range of our products. Stop by our store 
+          to meet some of the fantastic people who make Audiophile the best place to buy your portable 
+          audio equipment.
+        </p>
+      </article>
+      <picture class="about__picture">
+        <source class="image" media="(min-width:769px)" srcset="{% static "website/assets/shared/desktop/image-best-gear.jpg" %}"/>
+        <source class="image" media="(min-width:481px)" srcset="{% static "website/assets/shared/tablet/image-best-gear.jpg" %}"/>
+        <source class="image"  srcset="{% static "website/assets/shared/mobile/image-best-gear.jpg" %}"/>
+        <img class="image" src="{% static "website/assets/shared/desktop/image-best-gear.jpg" %}" alt="A young man listening to music" />
+      </picture>
+    </section>
   </main>
   <footer class="footer">
     <nav class="navigation footer__navigation">
