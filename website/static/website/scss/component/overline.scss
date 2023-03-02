@@ -1,0 +1,14 @@
+@use "../abstracts/index" as *;
+
+.overline {
+    opacity: 50%;
+    @include overline;
+
+    &--white {
+        color: var(--white);
+    }
+
+    &--primary {
+        color: var(--primary);
+    }
+}

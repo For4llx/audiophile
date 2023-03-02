@@ -6,6 +6,7 @@
     gap: 7rem;
     width: 100%;
     @include container;
+    background-color: var(--black);
 
     &--hero {
         background-image: url("/static/website/assets/home/desktop/image-hero.jpg");
