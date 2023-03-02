@@ -1,0 +1,15 @@
+@use "../abstracts/index" as *;
+
+.list {
+    display: flex;
+    flex-direction: column;
+    gap: 10rem;
+
+    @include medium {
+        gap: 7.5rem;
+    }
+
+    @include small {
+        gap: 1rem;
+    }
+}

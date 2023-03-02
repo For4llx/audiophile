@@ -33,7 +33,7 @@
     </nav>
   </header>
   <main class="main">
-    <ul>
+    <ul class="list">
       <li>
         <article class="card">
           <picture class="card__picture">
@@ -48,7 +48,57 @@
               <span>XX99 Mark II</span>
               <span>Headphones</span>
             </h1>
-            <p class="paragraph paragraph--black card__paragraph">
+            <p class="paragraph paragraph--black content__paragraph content__paragraph--wide">
+              The new XX99 Mark II headphones is the pinnacle of pristine audio.
+              It redefines your premium headphone experience by reproducing
+              the balanced depth and precision of studio-quality sound.
+            </p>
+            <button class="button button--primary content__button">
+              See product
+            </button>
+          </article>
+        </article>
+      </li>
+      <li>
+        <article class="card card--reverse">
+          <picture class="card__picture">
+            <source class="image" media="(min-width:769px)" srcset="{% static "products/assets/product-xx99-mark-two-headphones/desktop/image-category-page-preview.jpg" %}" />
+            <source class="image" media="(min-width:481px)" srcset="{% static "products/assets/product-xx99-mark-two-headphones/tablet/image-category-page-preview.jpg" %}" />
+            <source class="image" srcset="{% static "products/assets/product-xx99-mark-two-headphones/mobile/image-category-page-preview.jpg" %}" />
+            <img class="image" src="{% static "products/assets/product-xx99-mark-two-headphones/desktop/image-category-page-preview.jpg" %}" />
+          </picture>
+          <article class="content card__content">
+            <p class="overline overline--primary">New product</p>
+            <h1 class="h2 content__title">
+              <span>XX99 Mark II</span>
+              <span>Headphones</span>
+            </h1>
+            <p class="paragraph paragraph--black content__paragraph content__paragraph--wide">
+              The new XX99 Mark II headphones is the pinnacle of pristine audio.
+              It redefines your premium headphone experience by reproducing
+              the balanced depth and precision of studio-quality sound.
+            </p>
+            <button class="button button--primary content__button">
+              See product
+            </button>
+          </article>
+        </article>
+      </li>
+      <li>
+        <article class="card">
+          <picture class="card__picture">
+            <source class="image" media="(min-width:769px)" srcset="{% static "products/assets/product-xx99-mark-two-headphones/desktop/image-category-page-preview.jpg" %}" />
+            <source class="image" media="(min-width:481px)" srcset="{% static "products/assets/product-xx99-mark-two-headphones/tablet/image-category-page-preview.jpg" %}" />
+            <source class="image" srcset="{% static "products/assets/product-xx99-mark-two-headphones/mobile/image-category-page-preview.jpg" %}" />
+            <img class="image" src="{% static "products/assets/product-xx99-mark-two-headphones/desktop/image-category-page-preview.jpg" %}" />
+          </picture>
+          <article class="content card__content">
+            <p class="overline overline--primary">New product</p>
+            <h1 class="h2 content__title">
+              <span>XX99 Mark II</span>
+              <span>Headphones</span>
+            </h1>
+            <p class="paragraph paragraph--black content__paragraph content__paragraph--wide">
               The new XX99 Mark II headphones is the pinnacle of pristine audio.
               It redefines your premium headphone experience by reproducing
               the balanced depth and precision of studio-quality sound.
@@ -60,6 +110,28 @@
         </article>
       </li>
     </ul>
+    <nav class="category">
+      <ul class="category__menu">
+        <li class="category__item">
+          <a href="#" class="category__link category__link--headphones">
+            <span>Headphones</span>
+            <span class="category__button">Shop</span>
+          </a>
+        </li>
+        <li class="category__item">
+          <a href="#" class="category__link category__link--speakers">
+            <span>Speakers</span>
+            <span class="category__button">Shop</span>
+          </a>
+        </li>
+        <li class="category__item category__item--earphones">
+          <a href="#" class="category__link category__link--earphones">
+            <span>Earphones</span>
+            <span class="category__button">Shop</span>
+          </a>
+        </li>
+      </ul>
+    </nav>
     <section class="about">
       <article class="article about__article">
         <h2 class="h2 about__title">

@@ -7,6 +7,10 @@
     gap: 2rem;
     @include container;
 
+    &--reverse {
+        flex-direction: row-reverse;
+    }
+
     &__picture {
         max-width: 50%;
     }
@@ -15,7 +19,15 @@
         max-width: 50%;
     }
 
-    &__paragraph {
-        max-width: 445px;
+    @include medium {
+        flex-direction: column;
+
+        &__picture {
+            max-width: 100%;
+        }
+
+        &__content {
+            max-width: 100%;
+        }
     }
 }

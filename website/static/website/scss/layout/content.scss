@@ -13,16 +13,40 @@
     }
 
     &__paragraph {
-        width: 349px;
+        max-width: 349px;
         @include body;
+
+        &--wide {
+            max-width: 445px;
+        }
     }
 
+
+
     &__button {
-        margin-top: 16px;
+        margin-top: 1rem;
     }
 
     @include medium {
         text-align: center;
         align-items: center;
+
+        &__paragraph {
+            &--wide {
+                max-width: 572px;
+            }
+        }
+    }
+
+    @include small {
+        &__paragraph {
+            &--wide {
+                max-width: 327px;
+            }
+        }
+
+        &__button {
+            margin-top: 0;
+        }
     }
 }
