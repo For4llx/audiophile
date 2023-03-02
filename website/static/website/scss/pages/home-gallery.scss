@@ -55,7 +55,7 @@
 
     }
 
-    &__card {
+    &__content {
         padding: 0;
         width: fit-content;
         position: relative;
@@ -90,7 +90,7 @@
             }
         }
 
-        &__card {
+        &__content {
             &--first {
                 justify-content: flex-end;
             }
@@ -110,7 +110,7 @@
 
     @include small {
 
-        &__card {
+        &__content {
             &--second {
                 align-items: flex-start;
             }

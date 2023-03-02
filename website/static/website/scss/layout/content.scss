@@ -1,0 +1,28 @@
+@use "../abstracts/index" as *;
+
+.content {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 1.5rem;
+    border-radius: 0 0 var(--radius) var(--radius);
+
+    &__title {
+        display: flex;
+        flex-direction: column;
+    }
+
+    &__paragraph {
+        width: 349px;
+        @include body;
+    }
+
+    &__button {
+        margin-top: 16px;
+    }
+
+    @include medium {
+        text-align: center;
+        align-items: center;
+    }
+}
