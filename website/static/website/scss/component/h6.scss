@@ -1,0 +1,9 @@
+@use "../abstracts/index" as *;
+
+.h6 {
+    @include h6;
+
+    &--black {
+        color: var(--black);
+    }
+}

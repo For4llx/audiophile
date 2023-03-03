@@ -21,7 +21,10 @@
         }
     }
 
-
+    &__buttons {
+        display: flex;
+        gap: 1rem;
+    }
 
     &__button {
         margin-top: 1rem;
@@ -30,6 +33,11 @@
     @include medium {
         text-align: center;
         align-items: center;
+
+        &--left {
+            align-items: flex-start;
+            text-align: left;
+        }
 
         &__paragraph {
             &--wide {

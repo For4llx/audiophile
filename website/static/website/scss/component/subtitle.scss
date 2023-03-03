@@ -1,0 +1,9 @@
+@use "../abstracts/index" as *;
+
+.subtitle {
+    @include subtitle;
+
+    &--opacity-25 {
+        opacity: 25%;
+    }
+}

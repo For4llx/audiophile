@@ -1,0 +1,21 @@
+@use "../abstracts/index" as *;
+
+.counter {
+    display: flex;
+    align-items: center;
+    background-color: hsl(0, 0, 94%, 100%);
+
+    &__item {
+        padding-left: 1rem;
+        padding-right: 1rem;
+        padding-top: 0.6rem;
+        padding-bottom: 0.6rem;
+
+        &--button {
+            &:hover {
+                color: var(--primary);
+                opacity: 100%;
+            }
+        }
+    }
+}

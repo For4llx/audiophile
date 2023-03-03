@@ -7,11 +7,13 @@
 @use "component/h1";
 @use "component/h2";
 @use "component/h4";
+@use "component/h6";
 @use "component/paragraph";
 @use "component/emphasis";
 @use "component/image";
 @use "component/link";
 @use "component/overline";
+@use "component/subtitle";
 @use "component/list";
 
 @use "layout/header";
@@ -19,6 +21,7 @@
 @use "layout/menu";
 @use "layout/card";
 @use "layout/content";
+@use "layout/counter";
 @use "layout/category";
 @use "layout/about";
 @use "layout/article";

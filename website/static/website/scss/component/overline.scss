@@ -1,7 +1,6 @@
 @use "../abstracts/index" as *;
 
 .overline {
-    opacity: 50%;
     @include overline;
 
     &--white {
@@ -10,5 +9,9 @@
 
     &--primary {
         color: var(--primary);
+    }
+
+    &--opacity-50 {
+        opacity: 50%;
     }
 }

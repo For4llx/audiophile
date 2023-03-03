@@ -13,7 +13,7 @@
   <title>Frontend Mentor | Audiophile e-commerce website</title>
 </head>
 <body>
-  <header class="header header--hero">
+  <header class="header">
     <nav class="navigation navigation--border-bottom">
       <button class="navigation__hamburger">
         <img src="{% static "website/assets/shared/tablet/icon-hamburger.svg" %}" alt="menu" />
@@ -31,22 +31,39 @@
         <img src="{% static "website/assets/shared/desktop/icon-cart.svg" %}" alt="Cart icon" />
       </button>
     </nav>
-    <article class="content header__content">
-      <p class="overline overline--white overline--opacity-50">New product</p>
-      <h1 class="h1 h1--white content__title ">
-        <span>XX99 Mark II</span>
-        <span>Headphones</span>
-      </h1>
-      <p class="paragraph paragraph--white paragraph--high-opacity content__paragraph">
-        Experience natural, lifelike audio and exceptional 
-        build quality made for the passionatemusic enthusiast.
-      </p>
-      <button class="button button--primary content__button">
-        See product
-      </button>
-    </article>
   </header>
   <main class="main">
+    <article class="card card--row">
+        <picture class="card__picture">
+            <source class="image" media="(min-width:769px)" srcset="{% static "products/assets/product-xx99-mark-two-headphones/desktop/image-product.jpg" %}" />
+            <source class="image" media="(min-width:481px)" srcset="{% static "products/assets/product-xx99-mark-two-headphones/tablet/image-product.jpg" %}" />
+            <source class="image" srcset="{% static "products/assets/product-xx99-mark-two-headphones/mobile/image-product.jpg" %}" />
+            <img class="image" src="{% static "products/assets/product-xx99-mark-two-headphones/desktop/image-product.jpg" %}" />
+        </picture>
+        <article class="content content--left card__content">
+            <p class="overline overline--primary">New product</p>
+            <h1 class="h2 content__title">
+                <span>XX99 Mark II</span>
+                <span>Headphones</span>
+            </h1>
+            <p class="paragraph paragraph--black content__paragraph content__paragraph--wide">
+                The new XX99 Mark II headphones is the pinnacle of pristine audio.
+                It redefines your premium headphone experience by reproducing
+                the balanced depth and precision of studio-quality sound.
+            </p>
+            <p class="h6">$ 2,999</p>
+            <div class="content__buttons">
+                <div class="counter">
+                    <button class="subtitle subtitle--opacity-25 counter__item counter__item--button">-</button>
+                    <p class="subtitle counter__number counter__item">1</p>
+                    <button class="subtitle subtitle--opacity-25 counter__item counter__item--button">+</button>
+                </div>
+                <button class="button button--primary">
+                    Add to cart
+                </button>
+            </div>
+        </article>
+      </article>
     <nav class="category">
       <ul class="category__menu">
         <li class="category__item">
@@ -69,37 +86,6 @@
         </li>
       </ul>
     </nav>
-    <ul class="home-gallery">
-      <li class="home-gallery__item home-gallery__item--first">
-        <article class="content home-gallery__content home-gallery__content--first">
-          <h1 class="h1 h1--white content__title">
-            <span>ZX9</span>
-            <span>speaker</span>
-          </h1>
-          <p class="paragraph paragraph--white paragraph--high-opacity content__paragraph">
-            Upgrade to premium speakers that are phenomenally
-            built to deliver truly remarkable sound.
-          </p>
-          <button class="button button--primary-black content__button">See product</button>
-        </article>
-      </li>
-      <li class="home-gallery__item home-gallery__item--second">
-        <article class="content home-gallery__content home-gallery__content--second">
-          <h1 class="h4 h4--black content__title">
-            ZX7 speaker
-          </h1>
-          <button class="button button--secondary content__button">See product</button>
-        </article>
-      </li>
-      <li class="home-gallery__item home-gallery__item--third">
-        <article class="content home-gallery__content home-gallery__content--third">
-          <h1 class="h4 h4--black content__title">
-            YX1 earphones
-          </h1>
-          <button class="button button--secondary content__button">See product</button>
-        </article>
-      </li>
-    </ul>
     <section class="about">
       <article class="article about__article">
         <h2 class="h2 about__title">
