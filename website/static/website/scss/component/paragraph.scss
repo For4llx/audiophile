@@ -1,7 +1,6 @@
 @use "../abstracts/index" as *;
 
 .paragraph {
-    opacity: 50%;
     @include body;
 
     &--bold {
@@ -18,5 +17,9 @@
 
     &--high-opacity {
         opacity: 75%;
+    }
+
+    &--opacity-50 {
+        opacity: 50%;
     }
 }

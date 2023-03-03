@@ -1,0 +1,44 @@
+@use "../abstracts/index" as *;
+
+.information {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 2rem;
+    @include container;
+
+    &__features {
+        max-width: 635px;
+        width: inherit;
+    }
+
+    &__items {
+        max-width: 350px;
+    }
+
+    @include medium {
+        flex-direction: column;
+        gap: 7.5rem;
+
+        &__features {
+            max-width: 100%;
+        }
+
+        &__items {
+            display: flex;
+            flex-direction: row;
+            align-items: flex-start;
+            justify-content: space-between;
+            max-width: 549px;
+            width: inherit;
+        }
+    }
+
+    @include small {
+        gap: 5.5rem;
+
+        &__items {
+            flex-direction: column;
+        }
+    }
+}
