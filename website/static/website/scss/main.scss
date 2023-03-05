@@ -8,6 +8,7 @@
 @use "component/h2";
 @use "component/h3";
 @use "component/h4";
+@use "component/h5";
 @use "component/h6";
 @use "component/paragraph";
 @use "component/emphasis";
@@ -21,10 +22,12 @@
 @use "layout/navigation";
 @use "layout/menu";
 @use "layout/card";
+@use "layout/aside";
 @use "layout/content";
 @use "layout/counter";
 @use "layout/category";
 @use "layout/about";
+@use "layout/other";
 @use "layout/article";
 @use "layout/information";
 @use "layout/main";
@@ -32,3 +35,4 @@
 @use "layout/footer";
 
 @use "pages/home-gallery";
+@use "pages/product-gallery";

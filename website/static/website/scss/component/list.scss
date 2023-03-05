@@ -5,6 +5,11 @@
     flex-direction: column;
     gap: 10rem;
 
+    &--row {
+        flex-direction: row;
+        gap: 1.875rem;
+    }
+
     &__item {
         display: flex;
         gap: 1rem;
@@ -19,12 +24,22 @@
     @include medium {
         gap: 7.5rem;
 
+        &--row {
+            gap: 0.5rem;
+        }
+
         &--gap-1 {
             gap: 1rem;
         }
     }
 
     @include small {
+
+        &--row {
+            flex-direction: column;
+            gap: 3.5rem;
+        }
+
         gap: 1rem;
     }
 }
