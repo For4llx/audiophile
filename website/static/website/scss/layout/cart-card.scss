@@ -1,0 +1,17 @@
+@use "../abstracts/index" as *;
+
+.cart-card {
+    display: grid;
+    align-items: center;
+    grid-template-columns: 64px 1fr 1fr;
+    gap: 1rem;
+
+    &__picture {
+        height: 64px;
+        width: 64px;
+    }
+
+    &__counter {
+        justify-self: flex-end;
+    }
+}

@@ -8,6 +8,10 @@
     font-size: 13px;
     text-transform: uppercase;
 
+    &--wide {
+        width: 100%;
+    }
+
     &--primary {
         background-color: var(--primary);
         color: var(--white);

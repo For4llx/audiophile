@@ -17,6 +17,7 @@
 @use "component/overline";
 @use "component/subtitle";
 @use "component/list";
+@use "component/overlay";
 
 @use "layout/header";
 @use "layout/navigation";
@@ -30,6 +31,8 @@
 @use "layout/other";
 @use "layout/article";
 @use "layout/information";
+@use "layout/cart";
+@use "layout/cart-card";
 @use "layout/main";
 @use "layout/social";
 @use "layout/footer";
