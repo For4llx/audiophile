@@ -3,11 +3,10 @@
 .overlay {
     display: flex;
     justify-content: flex-end;
-    padding-top: 2rem;
+    padding-top: 8rem;
+    height: 100%;
     z-index: 1;
-    top: 94px;
     background-color: rgba(0, 0, 0, 0.432);
     position: fixed;
     @include container;
-    height: 100%;
 }
