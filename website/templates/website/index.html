@@ -9,10 +9,76 @@
   <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;700&display=swap" rel="stylesheet">
   <link rel="icon" type="image/png" sizes="32x32" href="{% static "website/assets/favicon-32x32.png" %}">
   <link rel="stylesheet" href="{% static 'website/css/dist/main.css' %}">
+  <script src="{% static "website/javascript/cart.js" %}" defer></script>
   
   <title>Frontend Mentor | Audiophile e-commerce website</title>
 </head>
 <body>
+  <div id="cart" class="overlay">
+    <div class="cart">
+      <div class="cart__header">
+        <p class="h6">CART (3)</p>
+        <button class="paragraph paragraph--underline paragraph--opacity-50">Remove all</button>
+      </div>
+      <ul class="cart__list">
+        <li>
+          <article class="cart-card">
+            <div class="cart-card__picture">
+              <img class="image" src="{% static "products/assets/product-xx99-mark-two-headphones/desktop/image-product.jpg" %}"/>
+            </div>
+            <div class="cart-card__content">
+              <p class="paragraph paragraph--bold">XX99 MK II</p>
+              <p class="paragraph paragraph--bold paragraph--opacity-50">$ 2,999</p>
+            </div>
+            <div class="counter cart-card__counter">
+              <button class="subtitle subtitle--opacity-25 counter__item counter__item--button">-</button>
+              <p class="subtitle counter__number counter__item">1</p>
+              <button class="subtitle subtitle--opacity-25 counter__item counter__item--button">+</button>
+            </div>
+          </article>
+        </li>
+        <li>
+          <article class="cart-card">
+            <div class="cart-card__picture">
+              <img class="image" src="{% static "products/assets/product-xx99-mark-two-headphones/desktop/image-product.jpg" %}"/>
+            </div>
+            <div class="cart-card__content">
+              <p class="paragraph paragraph--bold">XX99 MK II</p>
+              <p class="paragraph paragraph--bold paragraph--opacity-50">$ 2,999</p>
+            </div>
+            <div class="counter cart-card__counter">
+              <button class="subtitle subtitle--opacity-25 counter__item counter__item--button">-</button>
+              <p class="subtitle counter__number counter__item">1</p>
+              <button class="subtitle subtitle--opacity-25 counter__item counter__item--button">+</button>
+            </div>
+          </article>
+        </li>
+        <li>
+          <article class="cart-card">
+            <div class="cart-card__picture">
+              <img class="image" src="{% static "products/assets/product-xx99-mark-two-headphones/desktop/image-product.jpg" %}"/>
+            </div>
+            <div class="cart-card__content">
+              <p class="paragraph paragraph--bold">XX99 MK II</p>
+              <p class="paragraph paragraph--bold paragraph--opacity-50">$ 2,999</p>
+            </div>
+            <div class="counter cart-card__counter">
+              <button class="subtitle subtitle--opacity-25 counter__item counter__item--button">-</button>
+              <p class="subtitle counter__number counter__item">1</p>
+              <button class="subtitle subtitle--opacity-25 counter__item counter__item--button">+</button>
+            </div>
+          </article>
+        </li>
+      </ul>
+      <div class="cart__footer">
+        <div class="paragraph paragraph--space-between">
+          <p class="paragraph paragraph--opacity-50 paragraph--upper">Total</p>
+          <p class="paragraph paragraph--bold">$ 5,396</p>
+        </div>
+        <button class="button button--wide button--primary">Checkout</button>
+      </div>
+    </div>
+  </div>
   <header class="header header--hero">
     <nav class="navigation navigation--border-bottom">
       <button class="navigation__hamburger">
@@ -27,9 +93,9 @@
         <li><a class="link" href="#">Speakers</a></li>
         <li><a class="link" href="#">Earphones</a></li>
       </ul>
-      <button class="navigation__cart">
+      <cart-button class="navigation__cart">
         <img src="{% static "website/assets/shared/desktop/icon-cart.svg" %}" alt="Cart icon" />
-      </button>
+      </cart-button>
     </nav>
     <article class="content header__content">
       <p class="overline overline--white overline--opacity-50">New product</p>
