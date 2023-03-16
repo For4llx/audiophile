@@ -1,0 +1,24 @@
+@use "../abstracts/index" as *;
+
+.input {
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+    border: 1px solid #CFCFCF;
+    border-color: #CFCFCF;
+    border-radius: var(--radius);
+    font-weight: bold;
+    color: rgba(0, 0, 0, 40%);
+    caret-color: var(--primary);
+
+
+    &:focus {
+        color: var(--black);
+        border: 1px solid var(--primary);
+    }
+
+    &:invalid {
+        border: 2px solid var(--error);
+    }
+}

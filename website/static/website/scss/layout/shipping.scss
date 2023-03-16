@@ -1,0 +1,13 @@
+@use "../abstracts/index" as *;
+
+.shipping {
+    display: grid;
+    row-gap: 1rem;
+    column-gap: 1.5rem;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: auto repeat(3, 1fr);
+
+    &__subtitle {
+        grid-column: 1 / 3;
+    }
+}

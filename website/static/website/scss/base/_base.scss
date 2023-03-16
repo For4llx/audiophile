@@ -28,3 +28,11 @@ body {
     align-items: center;
     gap: 10.5rem;
 }
+
+input {
+    border: none;
+
+    &:focus {
+        outline: none;
+    }
+}

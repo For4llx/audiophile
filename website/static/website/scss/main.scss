@@ -4,6 +4,7 @@
 
 
 @use "component/button";
+@use "component/background";
 @use "component/h1";
 @use "component/h2";
 @use "component/h3";
@@ -17,14 +18,22 @@
 @use "component/overline";
 @use "component/subtitle";
 @use "component/list";
+@use "component/label";
 @use "component/overlay";
+@use "component/radio";
+@use "component/input";
 
 @use "layout/header";
 @use "layout/navigation";
+@use "layout/checkout";
+@use "layout/payment";
 @use "layout/menu";
+@use "layout/billing";
+@use "layout/shipping";
 @use "layout/card";
 @use "layout/aside";
 @use "layout/content";
+@use "layout/field";
 @use "layout/counter";
 @use "layout/category";
 @use "layout/about";
