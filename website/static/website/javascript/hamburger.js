@@ -1,4 +1,4 @@
-class CartButton extends HTMLElement {
+class HamburgerButton extends HTMLElement {
     constructor() {
         super();
         let is_open = false;
@@ -6,14 +6,14 @@ class CartButton extends HTMLElement {
     }
     handleClick(event) {
         if (!this.is_open) {
-            document.getElementById("cart").style.display = "flex";
+            document.getElementById("menu").style.display = "block";
             this.is_open = true
         }
         else {
-            document.getElementById("cart").style.display = "none";
+            document.getElementById("menu").style.display = "none";
             this.is_open = false;
         }
     }
 }
 
-window.customElements.define("cart-button", CartButton);
+window.customElements.define("hamburger-button", HamburgerButton);

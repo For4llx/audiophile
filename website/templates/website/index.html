@@ -10,6 +10,7 @@
   <link rel="icon" type="image/png" sizes="32x32" href="{% static "website/assets/favicon-32x32.png" %}">
   <link rel="stylesheet" href="{% static 'website/css/dist/main.css' %}">
   <script src="{% static "website/javascript/cart.js" %}" defer></script>
+  <script src="{% static "website/javascript/hamburger.js" %}" defer></script>
   
   <title>Frontend Mentor | Audiophile e-commerce website</title>
 </head>
@@ -79,11 +80,37 @@
       </div>
     </div>
   </div>
+  <div id="menu" class="overlay overlay--no-padding">
+    <div class="background background--white">
+      <nav class="category">
+        <ul class="category__menu">
+          <li class="category__item">
+            <a href="#" class="category__link category__link--headphones">
+              <span>Headphones</span>
+              <span class="category__button">Shop</span>
+            </a>
+          </li>
+          <li class="category__item">
+            <a href="#" class="category__link category__link--speakers">
+              <span>Speakers</span>
+              <span class="category__button">Shop</span>
+            </a>
+          </li>
+          <li class="category__item category__item--earphones">
+            <a href="#" class="category__link category__link--earphones">
+              <span>Earphones</span>
+              <span class="category__button">Shop</span>
+            </a>
+          </li>
+        </ul>
+      </nav>
+    </div>
+  </div>
   <header class="header header--hero">
     <nav class="navigation navigation--border-bottom">
-      <button class="navigation__hamburger">
+      <hamburger-button class="navigation__hamburger">
         <img src="{% static "website/assets/shared/tablet/icon-hamburger.svg" %}" alt="menu" />
-      </button>
+      </hamburger-button>
       <figure>
         <img src="{% static "website/assets/shared/desktop/logo.svg" %}" alt="Audiophile's logo" />
       </figure>
