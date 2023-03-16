@@ -1,0 +1,45 @@
+@use "../abstracts/index" as *;
+
+.confirmation {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    background-color: var(--white);
+    border-radius: var(--radius);
+    height: fit-content;
+    padding: 2rem;
+
+    &__title {
+        display: flex;
+        flex-direction: column;
+    }
+
+    &__summary {
+        display: flex;
+    }
+
+    &__items {
+        display: flex;
+        flex-direction: column;
+        gap: 0.75rem;
+        background-color: #F1F1F1;
+        border-radius: var(--radius) 0 0 var(--radius);
+        padding: 1.5rem;
+    }
+
+    &__total {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        gap: 0.5rem;
+        background-color: var(--black);
+        border-radius: 0 var(--radius) var(--radius) 0;
+        padding-left: 2rem;
+        padding-right: 2rem;
+
+    }
+
+    &__other {
+        text-align: center;
+    }
+}

@@ -9,4 +9,10 @@
     background-color: rgba(0, 0, 0, 0.432);
     position: fixed;
     @include container;
+
+    &--centered {
+        padding: 0;
+        justify-content: center;
+        align-items: center;
+    }
 }

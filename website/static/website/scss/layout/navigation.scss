@@ -7,10 +7,10 @@
     position: relative;
     z-index: 2;
     gap: 2rem;
+    padding-top: 2rem;
+    padding-bottom: 2rem;
 
     &--border-bottom {
-        padding-top: 2rem;
-        padding-bottom: 2rem;
         border-bottom: 1px solid hsl(0, 0, 59%, 100%);
     }
 

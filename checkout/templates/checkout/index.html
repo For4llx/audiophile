@@ -13,8 +13,40 @@
   <title>Frontend Mentor | Audiophile e-commerce website</title>
 </head>
 <body class="background">
+  <div class="overlay overlay--centered">
+    <div class="confirmation">
+      <svg width="64" height="64" xmlns="http://www.w3.org/2000/svg"><g fill="none" fill-rule="evenodd"><circle fill="#D87D4A" cx="32" cy="32" r="32"/><path stroke="#FFF" stroke-width="4" d="m20.754 33.333 6.751 6.751 15.804-15.803"/></g></svg>
+      <h3 class="h3 confirmation__title">
+        <span>Thank you</span>
+        <span>for your order</span>
+      </h3>
+      <p class="paragraph paragraph--opacity-50">You will receive an email confirmation shortly.</p>
+      <div class="confirmation__summary">
+        <div class="confirmation__items">
+          <article class="cart-card cart-card--border-bottom">
+            <div class="cart-card__picture">
+              <img class="image" src="{% static "products/assets/product-xx99-mark-two-headphones/desktop/image-product.jpg" %}"/>
+            </div>
+            <div class="cart-card__content">
+              <p class="paragraph paragraph--bold">XX99 MK II</p>
+              <p class="paragraph paragraph--bold paragraph--opacity-50">$ 2,999</p>
+            </div>
+            <div class="cart-card__counter">
+              <p class="paragraph paragraph--bold paragraph--opacity-50 counter__number">x1</p>
+            </div>
+          </article>
+          <p class="paragraph paragraph--bold paragraph--opacity-50 confirmation__other">and 2 other item(s)</p>
+        </div>
+        <div class="paragraph confirmation__total">
+          <p class="paragraph paragraph--white paragraph--opacity-50 paragraph--upper">Grand total</p>
+          <p class="paragraph paragraph--white paragraph--bold">$5,396</p>
+        </div>
+      </div>
+      <a class="button button--wide button--primary">Back to home</a>
+    </div>
+  </div>
   <header class="header">
-    <nav class="navigation navigation--border-bottom">
+    <nav class="navigation">
       <button class="navigation__hamburger">
         <img src="{% static "website/assets/shared/tablet/icon-hamburger.svg" %}" alt="menu" />
       </button>
