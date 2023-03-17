@@ -1,4 +1,4 @@
-class CartButton extends HTMLElement {
+export class CartButton extends HTMLElement {
     constructor() {
         super();
         let is_open = false;

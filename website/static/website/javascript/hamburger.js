@@ -1,4 +1,4 @@
-class HamburgerButton extends HTMLElement {
+export class HamburgerButton extends HTMLElement {
     constructor() {
         super();
         let is_open = false;

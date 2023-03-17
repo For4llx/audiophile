@@ -13,6 +13,97 @@
   <title>Frontend Mentor | Audiophile e-commerce website</title>
 </head>
 <body class="background">
+  <div id="cart" class="overlay">
+    <div class="cart">
+      <div class="cart__header">
+        <p class="h6">CART (3)</p>
+        <button class="paragraph paragraph--underline paragraph--opacity-50">Remove all</button>
+      </div>
+      <ul class="cart__list">
+        <li>
+          <article class="cart-card">
+            <div class="cart-card__picture">
+              <img class="image" src="{% static "products/assets/product-xx99-mark-two-headphones/desktop/image-product.jpg" %}"/>
+            </div>
+            <div class="cart-card__content">
+              <p class="paragraph paragraph--bold">XX99 MK II</p>
+              <p class="paragraph paragraph--bold paragraph--opacity-50">$ 2,999</p>
+            </div>
+            <div class="counter cart-card__counter">
+              <button class="subtitle subtitle--opacity-25 counter__item counter__item--button">-</button>
+              <p class="subtitle counter__number counter__item">1</p>
+              <button class="subtitle subtitle--opacity-25 counter__item counter__item--button">+</button>
+            </div>
+          </article>
+        </li>
+        <li>
+          <article class="cart-card">
+            <div class="cart-card__picture">
+              <img class="image" src="{% static "products/assets/product-xx99-mark-two-headphones/desktop/image-product.jpg" %}"/>
+            </div>
+            <div class="cart-card__content">
+              <p class="paragraph paragraph--bold">XX99 MK II</p>
+              <p class="paragraph paragraph--bold paragraph--opacity-50">$ 2,999</p>
+            </div>
+            <div class="counter cart-card__counter">
+              <button class="subtitle subtitle--opacity-25 counter__item counter__item--button">-</button>
+              <p class="subtitle counter__number counter__item">1</p>
+              <button class="subtitle subtitle--opacity-25 counter__item counter__item--button">+</button>
+            </div>
+          </article>
+        </li>
+        <li>
+          <article class="cart-card">
+            <div class="cart-card__picture">
+              <img class="image" src="{% static "products/assets/product-xx99-mark-two-headphones/desktop/image-product.jpg" %}"/>
+            </div>
+            <div class="cart-card__content">
+              <p class="paragraph paragraph--bold">XX99 MK II</p>
+              <p class="paragraph paragraph--bold paragraph--opacity-50">$ 2,999</p>
+            </div>
+            <div class="counter cart-card__counter">
+              <button class="subtitle subtitle--opacity-25 counter__item counter__item--button">-</button>
+              <p class="subtitle counter__number counter__item">1</p>
+              <button class="subtitle subtitle--opacity-25 counter__item counter__item--button">+</button>
+            </div>
+          </article>
+        </li>
+      </ul>
+      <div class="cart__footer">
+        <div class="paragraph paragraph--space-between">
+          <p class="paragraph paragraph--opacity-50 paragraph--upper">Total</p>
+          <p class="paragraph paragraph--bold">$ 5,396</p>
+        </div>
+        <button class="button button--wide button--primary">Checkout</button>
+      </div>
+    </div>
+  </div>
+  <div id="menu" class="overlay overlay--no-padding">
+    <div class="background background--white">
+      <nav class="category">
+        <ul class="category__menu">
+          <li class="category__item">
+            <a href="#" class="category__link category__link--headphones">
+              <span>Headphones</span>
+              <span class="category__button">Shop</span>
+            </a>
+          </li>
+          <li class="category__item">
+            <a href="#" class="category__link category__link--speakers">
+              <span>Speakers</span>
+              <span class="category__button">Shop</span>
+            </a>
+          </li>
+          <li class="category__item category__item--earphones">
+            <a href="#" class="category__link category__link--earphones">
+              <span>Earphones</span>
+              <span class="category__button">Shop</span>
+            </a>
+          </li>
+        </ul>
+      </nav>
+    </div>
+  </div>
   <div class="overlay overlay--centered">
     <div class="confirmation">
       <svg width="64" height="64" xmlns="http://www.w3.org/2000/svg"><g fill="none" fill-rule="evenodd"><circle fill="#D87D4A" cx="32" cy="32" r="32"/><path stroke="#FFF" stroke-width="4" d="m20.754 33.333 6.751 6.751 15.804-15.803"/></g></svg>
