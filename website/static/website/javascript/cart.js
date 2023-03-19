@@ -7,7 +7,7 @@ export class CartButton extends HTMLElement {
     handleClick(event) {
         if (!this.is_open) {
             document.getElementById("cart").style.display = "flex";
-            this.is_open = true
+            this.is_open = true;
         }
         else {
             document.getElementById("cart").style.display = "none";

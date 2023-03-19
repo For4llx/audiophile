@@ -7,7 +7,7 @@ export class HamburgerButton extends HTMLElement {
     handleClick(event) {
         if (!this.is_open) {
             document.getElementById("menu").style.display = "block";
-            this.is_open = true
+            this.is_open = true;
         }
         else {
             document.getElementById("menu").style.display = "none";
