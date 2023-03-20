@@ -12,10 +12,13 @@ class ProductIndexView(TemplateView):
         context = super().get_context_data(**kwargs)
         if category == "earphones":
             context["products"] = Product.objects.filter(category="earphones")
+            context["category"] = "earphones"
         if category == "headphones":
             context["products"] = Product.objects.filter(category="headphones")
+            context["category"] = "headphones"
         if category == "speakers":
             context["products"] = Product.objects.filter(category="speakers")
+            context["category"] = "speakers"
         return context
 
 

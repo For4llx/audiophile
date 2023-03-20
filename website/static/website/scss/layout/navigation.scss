@@ -16,6 +16,11 @@
 
     &__hamburger {
         display: none;
+        cursor: pointer;
+    }
+
+    &__cart {
+        cursor: pointer;
     }
 
     @include medium {

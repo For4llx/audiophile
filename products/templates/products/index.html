@@ -9,7 +9,8 @@
   <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;700&display=swap" rel="stylesheet">
   <link rel="icon" type="image/png" sizes="32x32" href="{% static "website/assets/favicon-32x32.png" %}">
   <link rel="stylesheet" href="{% static 'website/css/dist/main.css' %}">
-  
+  <script type="module" src="{% static "website/javascript/main.js" %}" defer></script>
+
   <title>Frontend Mentor | Audiophile e-commerce website</title>
 </head>
 <body>
@@ -83,19 +84,19 @@
       <nav class="category">
         <ul class="category__menu">
           <li class="category__item">
-            <a href="#" class="category__link category__link--headphones">
+            <a href="{% url 'products:products' category="headphones" %}" class="category__link category__link--headphones">
               <span>Headphones</span>
               <span class="category__button">Shop</span>
             </a>
           </li>
           <li class="category__item">
-            <a href="#" class="category__link category__link--speakers">
+            <a href="{% url 'products:products' category="speakers" %}" class="category__link category__link--speakers">
               <span>Speakers</span>
               <span class="category__button">Shop</span>
             </a>
           </li>
           <li class="category__item category__item--earphones">
-            <a href="#" class="category__link category__link--earphones">
+            <a href="{% url 'products:products' category="earphones" %}" class="category__link category__link--earphones">
               <span>Earphones</span>
               <span class="category__button">Shop</span>
             </a>
@@ -106,23 +107,23 @@
   </div>
   <header class="header">
     <nav class="navigation navigation--border-bottom">
-      <button class="navigation__hamburger">
-        <img src="{% static "website/assets/shared/tablet/icon-hamburger.svg" %}" alt="menu" />
-      </button>
+      <hamburger-button class="link navigation__hamburger">
+        <svg width="16" height="15" xmlns="http://www.w3.org/2000/svg"><g fill-rule="evenodd"><path d="M0 0h16v3H0zM0 6h16v3H0zM0 12h16v3H0z"/></g></svg>
+      </hamburger-button>
       <figure>
         <img src="{% static "website/assets/shared/desktop/logo.svg" %}" alt="Audiophile's logo" />
       </figure>
       <ul class="menu">
-        <li><a class="link" href="#">Home</a></li>
-        <li><a class="link" href="#">Headphones</a></li>
-        <li><a class="link" href="#">Speakers</a></li>
-        <li><a class="link" href="#">Earphones</a></li>
+        <li><a class="link" href="/">Home</a></li>
+        <li><a class="link" href="{% url 'products:products' category="headphones" %}">Headphones</a></li>
+        <li><a class="link" href="{% url 'products:products' category="speakers" %}">Speakers</a></li>
+        <li><a class="link" href="{% url 'products:products' category="earphones" %}">Earphones</a></li>
       </ul>
-      <button class="navigation__cart">
-        <img src="{% static "website/assets/shared/desktop/icon-cart.svg" %}" alt="Cart icon" />
-      </button>
+      <cart-button class="link navigation__cart">
+        <svg width="23" height="20" xmlns="http://www.w3.org/2000/svg"><path d="M8.625 15.833c1.132 0 2.054.935 2.054 2.084 0 1.148-.922 2.083-2.054 2.083-1.132 0-2.054-.935-2.054-2.083 0-1.15.922-2.084 2.054-2.084zm9.857 0c1.132 0 2.054.935 2.054 2.084 0 1.148-.922 2.083-2.054 2.083-1.132 0-2.053-.935-2.053-2.083 0-1.15.92-2.084 2.053-2.084zm-9.857 1.39a.69.69 0 00-.685.694.69.69 0 00.685.694.69.69 0 00.685-.694.69.69 0 00-.685-.695zm9.857 0a.69.69 0 00-.684.694.69.69 0 00.684.694.69.69 0 00.685-.694.69.69 0 00-.685-.695zM4.717 0c.316 0 .59.215.658.517l.481 2.122h16.47a.68.68 0 01.538.262c.127.166.168.38.11.579l-2.695 9.236a.672.672 0 01-.648.478H7.41a.667.667 0 00-.673.66c0 .364.303.66.674.66h12.219c.372 0 .674.295.674.66 0 .364-.302.66-.674.66H7.412c-1.115 0-2.021-.889-2.021-1.98 0-.812.502-1.511 1.218-1.816L4.176 1.32H.674A.667.667 0 010 .66C0 .296.302 0 .674 0zm16.716 3.958H6.156l1.797 7.917h11.17l2.31-7.917z" fill-rule="nonzero"/></svg>
+      </cart-button>
     </nav>
-    <h2 class="h2 h2--white header__title">Headphones</h2>
+    <h2 class="h2 h2--white header__title">{{ category }}</h2>
   </header>
   <main class="main">
     <ul class="list">
@@ -142,12 +143,12 @@
             <h1 class="h2 content__title">
               {{ product.name }}
             </h1>
-            <p class="paragraph paragraph--black content__paragraph content__paragraph--wide">
+            <p class="paragraph paragraph--opacity-50 paragraph--black content__paragraph content__paragraph--wide">
               {{ product.description }}
             </p>
-            <button class="button button--primary content__button">
+            <a href="{% url 'products:product' category=product.category slug=product.slug %}" class="button button--primary content__button">
               See product
-            </button>
+            </a>
           </article>
         </article>
       </li>
@@ -156,19 +157,19 @@
     <nav class="category">
       <ul class="category__menu">
         <li class="category__item">
-          <a href="#" class="category__link category__link--headphones">
+          <a href="{% url 'products:products' category="headphones" %}" class="category__link category__link--headphones">
             <span>Headphones</span>
             <span class="category__button">Shop</span>
           </a>
         </li>
         <li class="category__item">
-          <a href="#" class="category__link category__link--speakers">
+          <a href="{% url 'products:products' category="speakers" %}" class="category__link category__link--speakers">
             <span>Speakers</span>
             <span class="category__button">Shop</span>
           </a>
         </li>
         <li class="category__item category__item--earphones">
-          <a href="#" class="category__link category__link--earphones">
+          <a href="{% url 'products:products' category="earphones" %}" class="category__link category__link--earphones">
             <span>Earphones</span>
             <span class="category__button">Shop</span>
           </a>
@@ -180,7 +181,7 @@
         <h2 class="h2 about__title">
           Bringing you the <em class="emphasis">best</em> audio gear
         </h2>
-        <p class="paragraph paragraph--black">
+        <p class="paragraph paragraph--opacity-50 paragraph--black">
           Located at the heart of New York City, Audiophile is the premier store for high end headphones, 
           earphones, speakers, and audio accessories. We have a large showroom and luxury demonstration 
           rooms available for you to browse and experience a wide range of our products. Stop by our store 
@@ -202,14 +203,14 @@
         <img src="{% static "website/assets/shared/desktop/logo.svg" %}" alt="Audiophile's logo" />
       </figure>
       <ul class="menu menu--display">
-        <li><a class="link" href="#">Home</a></li>
-        <li><a class="link" href="#">Headphones</a></li>
-        <li><a class="link" href="#">Speakers</a></li>
-        <li><a class="link" href="#">Earphones</a></li>
+        <li><a class="link" href="/">Home</a></li>
+        <li><a class="link" href="{% url 'products:products' category="hearphones" %}">Headphones</a></li>
+        <li><a class="link" href="{% url 'products:products' category="speakers" %}">Speakers</a></li>
+        <li><a class="link" href="{% url 'products:products' category="earphones" %}">Earphones</a></li>
       </ul>
     </nav>
     <div class="footer__content">
-      <p class="paragraph paragraph--white footer__paragraph">
+      <p class="paragraph paragraph--opacity-50 paragraph--white footer__paragraph">
         Audiophile is an all in one stop to fulfill your audio needs. We're a small team of music lovers 
         and sound specialists who are devoted to helping you get the most out of personal audio. Come and 
         visit our demo facility - we’re open 7 days a week.
@@ -239,7 +240,7 @@
           </li>
         </ul>
       </nav>
-      <p class="paragraph paragraph--white paragraph--bold footer__copyright">Copyright 2021. All Rights Reserved</p>
+      <p class="paragraph paragraph--opacity-50 paragraph--white paragraph--bold footer__copyright">Copyright 2021. All Rights Reserved</p>
     </div>
   </footer>
 </body>
