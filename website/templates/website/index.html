@@ -80,19 +80,19 @@
       <nav class="category">
         <ul class="category__menu">
           <li class="category__item">
-            <a href="#" class="category__link category__link--headphones">
+            <a href="{% url 'products:products' category="headphones" %}" class="category__link category__link--headphones">
               <span>Headphones</span>
               <span class="category__button">Shop</span>
             </a>
           </li>
           <li class="category__item">
-            <a href="#" class="category__link category__link--speakers">
+            <a href="{% url 'products:products' category="speakers" %}" class="category__link category__link--speakers">
               <span>Speakers</span>
               <span class="category__button">Shop</span>
             </a>
           </li>
           <li class="category__item category__item--earphones">
-            <a href="#" class="category__link category__link--earphones">
+            <a href="{% url 'products:products' category="earphones" %}" class="category__link category__link--earphones">
               <span>Earphones</span>
               <span class="category__button">Shop</span>
             </a>
@@ -110,10 +110,10 @@
         <img src="{% static "website/assets/shared/desktop/logo.svg" %}" alt="Audiophile's logo" />
       </figure>
       <ul class="menu">
-        <li><a class="link" href="#">Home</a></li>
-        <li><a class="link" href="#">Headphones</a></li>
-        <li><a class="link" href="#">Speakers</a></li>
-        <li><a class="link" href="#">Earphones</a></li>
+        <li><a class="link" href="/">Home</a></li>
+        <li><a class="link" href="{% url 'products:products' category="headphones" %}">Headphones</a></li>
+        <li><a class="link" href="{% url 'products:products' category="speakers" %}">Speakers</a></li>
+        <li><a class="link" href="{% url 'products:products' category="earphones" %}">Earphones</a></li>
       </ul>
       <cart-button class="navigation__cart">
         <img src="{% static "website/assets/shared/desktop/icon-cart.svg" %}" alt="Cart icon" />
@@ -129,28 +129,28 @@
         Experience natural, lifelike audio and exceptional 
         build quality made for the passionatemusic enthusiast.
       </p>
-      <button class="button button--primary content__button">
+      <a href="{% url 'products:product' category="headphones" slug="xx99-mark-two-headphones" %}" class="button button--primary content__button">
         See product
-      </button>
+      </a>
     </article>
   </header>
   <main class="main">
     <nav class="category">
       <ul class="category__menu">
         <li class="category__item">
-          <a href="#" class="category__link category__link--headphones">
+          <a href="{% url 'products:products' category="headphones" %}" class="category__link category__link--headphones">
             <span>Headphones</span>
             <span class="category__button">Shop</span>
           </a>
         </li>
         <li class="category__item">
-          <a href="#" class="category__link category__link--speakers">
+          <a href="{% url 'products:products' category="speakers" %}" class="category__link category__link--speakers">
             <span>Speakers</span>
             <span class="category__button">Shop</span>
           </a>
         </li>
         <li class="category__item category__item--earphones">
-          <a href="#" class="category__link category__link--earphones">
+          <a href="{% url 'products:products' category="earphones" %}" class="category__link category__link--earphones">
             <span>Earphones</span>
             <span class="category__button">Shop</span>
           </a>
@@ -168,7 +168,7 @@
             Upgrade to premium speakers that are phenomenally
             built to deliver truly remarkable sound.
           </p>
-          <button class="button button--primary-black content__button">See product</button>
+          <a href="{% url 'products:product' category="speakers" slug="zx9-speaker" %}" class="button button--primary-black content__button">See product</a>
         </article>
       </li>
       <li class="home-gallery__item home-gallery__item--second">
@@ -176,7 +176,7 @@
           <h1 class="h4 h4--black content__title">
             ZX7 speaker
           </h1>
-          <button class="button button--secondary content__button">See product</button>
+          <a href="{% url 'products:product' category="speakers" slug="zx7-speaker" %}" class="button button--secondary content__button">See product</a>
         </article>
       </li>
       <li class="home-gallery__item home-gallery__item--third">
@@ -184,7 +184,7 @@
           <h1 class="h4 h4--black content__title">
             YX1 earphones
           </h1>
-          <button class="button button--secondary content__button">See product</button>
+          <a href="{% url 'products:product' category="earphones" slug="yx1-earphones" %}" class="button button--secondary content__button">See product</a>
         </article>
       </li>
     </ul>
@@ -193,7 +193,7 @@
         <h2 class="h2 about__title">
           Bringing you the <em class="emphasis">best</em> audio gear
         </h2>
-        <p class="paragraph paragraph--black">
+        <p class="paragraph paragraph--opacity-50 paragraph--black">
           Located at the heart of New York City, Audiophile is the premier store for high end headphones, 
           earphones, speakers, and audio accessories. We have a large showroom and luxury demonstration 
           rooms available for you to browse and experience a wide range of our products. Stop by our store 
@@ -215,14 +215,14 @@
         <img src="{% static "website/assets/shared/desktop/logo.svg" %}" alt="Audiophile's logo" />
       </figure>
       <ul class="menu menu--display">
-        <li><a class="link" href="#">Home</a></li>
-        <li><a class="link" href="#">Headphones</a></li>
-        <li><a class="link" href="#">Speakers</a></li>
-        <li><a class="link" href="#">Earphones</a></li>
+        <li><a class="link" href="/">Home</a></li>
+        <li><a class="link" href="{% url 'products:products' category="hearphones" %}">Headphones</a></li>
+        <li><a class="link" href="{% url 'products:products' category="speakers" %}">Speakers</a></li>
+        <li><a class="link" href="{% url 'products:products' category="earphones" %}">Earphones</a></li>
       </ul>
     </nav>
     <div class="footer__content">
-      <p class="paragraph paragraph--white footer__paragraph">
+      <p class="paragraph paragraph--opacity-50 paragraph--white footer__paragraph">
         Audiophile is an all in one stop to fulfill your audio needs. We're a small team of music lovers 
         and sound specialists who are devoted to helping you get the most out of personal audio. Come and 
         visit our demo facility - we’re open 7 days a week.
@@ -252,7 +252,7 @@
           </li>
         </ul>
       </nav>
-      <p class="paragraph paragraph--white paragraph--bold footer__copyright">Copyright 2021. All Rights Reserved</p>
+      <p class="paragraph paragraph--opacity-50 paragraph--white paragraph--bold footer__copyright">Copyright 2021. All Rights Reserved</p>
     </div>
   </footer>
 </body>
