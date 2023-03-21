@@ -134,7 +134,7 @@
             <source class="image" media="(min-width:769px)" srcset="{% static "products/"|add:product.categoryImage.desktop %}" />
             <source class="image" media="(min-width:481px)" srcset="{% static "products/"|add:product.categoryImage.tablet %}" />
             <source class="image" srcset="{% static "products/"|add:product.categoryImage.mobile %}" />
-            <img class="image" src="{% static "products/"|add:product.categoryImage.mobile %}" alt="{{ product.name }}" />
+            <img class="image" src="{% static "products/"|add:product.categoryImage.desktop %}" alt="{{ product.name }}" />
           </picture>
           <article class="content card__content">
             {% if product.new %}

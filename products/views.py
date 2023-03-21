@@ -26,3 +26,8 @@ class ProductDetailView(TemplateView):
     """Display Product Detail"""
 
     template_name = "products/product.html"
+
+    def get_context_data(self, category, slug, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context["product"] = Product.objects.get(slug=slug)
+        return context

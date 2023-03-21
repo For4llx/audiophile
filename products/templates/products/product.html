@@ -9,7 +9,8 @@
   <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;700&display=swap" rel="stylesheet">
   <link rel="icon" type="image/png" sizes="32x32" href="{% static "website/assets/favicon-32x32.png" %}">
   <link rel="stylesheet" href="{% static 'website/css/dist/main.css' %}">
-  
+  <script type="module" src="{% static "website/javascript/main.js" %}" defer></script>
+
   <title>Frontend Mentor | Audiophile e-commerce website</title>
 </head>
 <body>
@@ -105,50 +106,45 @@
     </div>
   </div>
   <header class="header">
-    <nav class="navigation navigation--border-bottom">
-      <button class="navigation__hamburger">
-        <img src="{% static "website/assets/shared/tablet/icon-hamburger.svg" %}" alt="menu" />
-      </button>
+    <nav class="navigation">
+      <hamburger-button class="link navigation__hamburger">
+        <svg width="16" height="15" xmlns="http://www.w3.org/2000/svg"><g fill-rule="evenodd"><path d="M0 0h16v3H0zM0 6h16v3H0zM0 12h16v3H0z"/></g></svg>
+      </hamburger-button>
       <figure>
         <img src="{% static "website/assets/shared/desktop/logo.svg" %}" alt="Audiophile's logo" />
       </figure>
       <ul class="menu">
-        <li><a class="link" href="#">Home</a></li>
-        <li><a class="link" href="#">Headphones</a></li>
-        <li><a class="link" href="#">Speakers</a></li>
-        <li><a class="link" href="#">Earphones</a></li>
+        <li><a class="link" href="/">Home</a></li>
+        <li><a class="link" href="{% url 'products:products' category="headphones" %}">Headphones</a></li>
+        <li><a class="link" href="{% url 'products:products' category="speakers" %}">Speakers</a></li>
+        <li><a class="link" href="{% url 'products:products' category="earphones" %}">Earphones</a></li>
       </ul>
-      <button class="navigation__cart">
-        <img src="{% static "website/assets/shared/desktop/icon-cart.svg" %}" alt="Cart icon" />
-      </button>
+      <cart-button class="link navigation__cart">
+        <svg width="23" height="20" xmlns="http://www.w3.org/2000/svg"><path d="M8.625 15.833c1.132 0 2.054.935 2.054 2.084 0 1.148-.922 2.083-2.054 2.083-1.132 0-2.054-.935-2.054-2.083 0-1.15.922-2.084 2.054-2.084zm9.857 0c1.132 0 2.054.935 2.054 2.084 0 1.148-.922 2.083-2.054 2.083-1.132 0-2.053-.935-2.053-2.083 0-1.15.92-2.084 2.053-2.084zm-9.857 1.39a.69.69 0 00-.685.694.69.69 0 00.685.694.69.69 0 00.685-.694.69.69 0 00-.685-.695zm9.857 0a.69.69 0 00-.684.694.69.69 0 00.684.694.69.69 0 00.685-.694.69.69 0 00-.685-.695zM4.717 0c.316 0 .59.215.658.517l.481 2.122h16.47a.68.68 0 01.538.262c.127.166.168.38.11.579l-2.695 9.236a.672.672 0 01-.648.478H7.41a.667.667 0 00-.673.66c0 .364.303.66.674.66h12.219c.372 0 .674.295.674.66 0 .364-.302.66-.674.66H7.412c-1.115 0-2.021-.889-2.021-1.98 0-.812.502-1.511 1.218-1.816L4.176 1.32H.674A.667.667 0 010 .66C0 .296.302 0 .674 0zm16.716 3.958H6.156l1.797 7.917h11.17l2.31-7.917z" fill-rule="nonzero"/></svg>
+      </cart-button>
     </nav>
   </header>
   <main class="main">
     <article class="card card--row">
         <picture class="card__picture">
-            <source class="image" media="(min-width:769px)" srcset="{% static "products/assets/product-xx99-mark-two-headphones/desktop/image-product.jpg" %}" />
-            <source class="image" media="(min-width:481px)" srcset="{% static "products/assets/product-xx99-mark-two-headphones/tablet/image-product.jpg" %}" />
-            <source class="image" srcset="{% static "products/assets/product-xx99-mark-two-headphones/mobile/image-product.jpg" %}" />
-            <img class="image" src="{% static "products/assets/product-xx99-mark-two-headphones/desktop/image-product.jpg" %}" />
+            <source class="image" media="(min-width:769px)" srcset="{% static "products/"|add:product.image.desktop %}" />
+            <source class="image" media="(min-width:481px)" srcset="{% static "products/"|add:product.image.tablet %}" />
+            <source class="image" srcset="{% static "products/"|add:product.image.mobile %}" />
+            <img class="image" src="{% static "products/"|add:product.image.desktop %}" />
         </picture>
         <article class="content content--left card__content">
+            {% if product.new %}
             <p class="overline overline--primary">New product</p>
+            {% endif %}
             <h1 class="h2 content__title">
-                <span>XX99 Mark II</span>
-                <span>Headphones</span>
+                {{ product.name }}
             </h1>
             <p class="paragraph paragraph--opacity-50 paragraph--black content__paragraph content__paragraph--wide">
-                The new XX99 Mark II headphones is the pinnacle of pristine audio.
-                It redefines your premium headphone experience by reproducing
-                the balanced depth and precision of studio-quality sound.
+              {{ product.description }}
             </p>
-            <p class="h6">$ 2,999</p>
+            <p class="h6">$ {{ product.price }}</p>
             <div class="content__buttons">
-                <div class="counter">
-                    <button class="subtitle subtitle--opacity-25 counter__item counter__item--button">-</button>
-                    <p class="subtitle counter__number counter__item">1</p>
-                    <button class="subtitle subtitle--opacity-25 counter__item counter__item--button">+</button>
-                </div>
+              <counter-button class="counter"></counter-button>
                 <button class="button button--primary">
                     Add to cart
                 </button>
@@ -158,66 +154,40 @@
     <section class="information">
         <article class="content content--left information__features">
             <h2 class="h3">Features</h2>
-            <p class="paragraph paragraph--opacity-50">
-                Featuring a genuine leather head strap and premium earcups,
-                these headphones deliver superior comfort for those who like to enjoy
-                endless listening. It includes intuitive controls designed for any situation.
-                Whether you’re taking a business call or just in your own personal space,
-                the auto on/off and pause features ensure that you’ll never miss a beat.
-            </p>
-            <p class="paragraph paragraph--opacity-50">
-                The advanced Active Noise Cancellation with built-in equalizer allow you
-                to experience your audio world on your terms. It lets you enjoy your audio
-                in peace, but quickly interact with your surroundings when you need to.
-                Combined with Bluetooth 5. 0 compliant connectivity and 17 hour battery life,
-                the XX99 Mark II headphones gives you superior sound, cutting-edge technology,
-                and a modern design aesthetic.
-            </p>
+            <div class="paragraph paragraph--opacity-50 information__content">
+            {{ product.features|linebreaks }}
+            </div>
         </article>
         <article class="content information__items">
             <h2 class="h3">In the box</h2>
             <ul class="list list--gap-1">
+              {% for include in product.include.all %}
                 <li class="list__item">
-                    <span class="paragraph paragraph--bold emphasis">2x</span>
-                    <p class="paragraph paragraph--opacity-50">Earphone Unit</p>
+                    <span class="paragraph paragraph--bold emphasis">{{ include.quantity }}x</span>
+                    <p class="paragraph paragraph--opacity-50">{{ include.item }}</p>
                 </li>
-                <li class="list__item">
-                    <span class="paragraph paragraph--bold emphasis">6x</span>
-                    <p class="paragraph paragraph--opacity-50">Multi-size Earplugs</p>
-                </li>
-                <li class="list__item">
-                    <span class="paragraph paragraph--bold emphasis">1x</span>
-                    <p class="paragraph paragraph--opacity-50">User Manual</p>
-                </li>
-                <li class="list__item">
-                    <span class="paragraph paragraph--bold emphasis">1x</span>
-                    <p class="paragraph paragraph--opacity-50">USB-C Charging Cable</p>
-                </li>
-                <li class="list__item">
-                    <span class="paragraph paragraph--bold emphasis">1x</span>
-                    <p class="paragraph paragraph--opacity-50">Travel Pouch</p>
-                </li>
+              {% endfor %}
             </ul>
         </article>
     </section>
     <div class="product-gallery">
         <picture class="product-gallery__one">
-            <source class="image" media="(min-width:769px)" srcset="{% static "products/assets/product-xx99-mark-two-headphones/desktop/image-gallery-1.jpg" %}" />
-            <source class="image" media="(min-width:481px)" srcset="{% static "products/assets/product-xx99-mark-two-headphones/tablet/image-gallery-1.jpg" %}" />
-            <source class="image" srcset="{% static "products/assets/product-xx99-mark-two-headphones/mobile/image-gallery-1.jpg" %}" />
-            <img class="image" src="{% static "products/assets/product-xx99-mark-two-headphones/desktop/image-gallery-1.jpg" %}" />
+            <source class="image" media="(min-width:769px)" srcset="{% static "products/"|add:product.gallery.first.desktop %}" />
+            <source class="image" media="(min-width:481px)" srcset="{% static "products/"|add:product.gallery.first.tablet %}" />
+            <source class="image" srcset="{% static "products/"|add:product.gallery.first.mobile %}" />
+            <img class="image" src="{% static "products/"|add:product.gallery.first.desktop %}" />
         </picture>
         <picture class="product-gallery__two">
-            <source class="image" media="(min-width:769px)" srcset="{% static "products/assets/product-xx99-mark-two-headphones/desktop/image-gallery-2.jpg" %}" />
-            <source class="image" media="(min-width:481px)" srcset="{% static "products/assets/product-xx99-mark-two-headphones/tablet/image-gallery-2.jpg" %}" />
-            <source class="image" srcset="{% static "products/assets/product-xx99-mark-two-headphones/mobile/image-gallery-2.jpg" %}" />
-            <img class="image" src="{% static "products/assets/product-xx99-mark-two-headphones/desktop/image-gallery-2.jpg" %}" />
+            <source class="image" media="(min-width:769px)" srcset="{% static "products/"|add:product.gallery.second.desktop %}" />
+            <source class="image" media="(min-width:481px)" srcset="{% static "products/"|add:product.gallery.second.tablet %}" />
+            <source class="image" srcset="{% static "products/"|add:product.gallery.second.mobile %}" />
+            <img class="image" src="{% static "products/"|add:product.gallery.second.desktop %}" />
         </picture>
         <picture class="product-gallery__three">
-            <source class="image" media="(min-width:769px)" srcset="{% static "products/assets/product-xx99-mark-two-headphones/desktop/image-gallery-3.jpg" %}" />
-            <source class="image" media="(min-width:481px)" srcset="{% static "products/assets/product-xx99-mark-two-headphones/tablet/image-gallery-3.jpg" %}" />
-            <source class="image" srcset="{% static "products/assets/product-xx99-mark-two-headphones/mobile/image-gallery-3.jpg" %}" />
-            <img class="image" src="{% static "products/assets/product-xx99-mark-two-headphones/desktop/image-gallery-3.jpg" %}" />
+            <source class="image" media="(min-width:769px)" srcset="{% static "products/"|add:product.gallery.third.desktop %}" />
+            <source class="image" media="(min-width:481px)" srcset="{% static "products/"|add:product.gallery.third.tablet %}" />
+            <source class="image" srcset="{% static "products/"|add:product.gallery.third.mobile %}" />
+            <img class="image" src="{% static "products/"|add:product.gallery.third.desktop %}" />
         </picture>
     </div>
     <aside class="aside">
@@ -264,19 +234,19 @@
     <nav class="category">
       <ul class="category__menu">
         <li class="category__item">
-          <a href="#" class="category__link category__link--headphones">
+          <a href="{% url 'products:products' category="headphones" %}" class="category__link category__link--headphones">
             <span>Headphones</span>
             <span class="category__button">Shop</span>
           </a>
         </li>
         <li class="category__item">
-          <a href="#" class="category__link category__link--speakers">
+          <a href="{% url 'products:products' category="speakers" %}" class="category__link category__link--speakers">
             <span>Speakers</span>
             <span class="category__button">Shop</span>
           </a>
         </li>
         <li class="category__item category__item--earphones">
-          <a href="#" class="category__link category__link--earphones">
+          <a href="{% url 'products:products' category="earphones" %}" class="category__link category__link--earphones">
             <span>Earphones</span>
             <span class="category__button">Shop</span>
           </a>
@@ -310,10 +280,10 @@
         <img src="{% static "website/assets/shared/desktop/logo.svg" %}" alt="Audiophile's logo" />
       </figure>
       <ul class="menu menu--display">
-        <li><a class="link" href="#">Home</a></li>
-        <li><a class="link" href="#">Headphones</a></li>
-        <li><a class="link" href="#">Speakers</a></li>
-        <li><a class="link" href="#">Earphones</a></li>
+        <li><a class="link" href="/">Home</a></li>
+        <li><a class="link" href="{% url 'products:products' category="hearphones" %}">Headphones</a></li>
+        <li><a class="link" href="{% url 'products:products' category="speakers" %}">Speakers</a></li>
+        <li><a class="link" href="{% url 'products:products' category="earphones" %}">Earphones</a></li>
       </ul>
     </nav>
     <div class="footer__content">
