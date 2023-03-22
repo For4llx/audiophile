@@ -1,7 +1,6 @@
 import { CartButton } from "./cart.js";
 import { HamburgerButton } from "./hamburger.js";
 import { CounterButton } from "./counter.js";
-import { ProductForm } from "./product-form.js";
 
 
 function uuidv4() {

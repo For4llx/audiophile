@@ -21,14 +21,15 @@
         <button class="paragraph paragraph--underline paragraph--opacity-50">Remove all</button>
       </div>
       <ul class="cart__list">
+        {% for item in items %}
         <li>
           <article class="cart-card">
             <div class="cart-card__picture">
               <img class="image" src="{% static "products/assets/product-xx99-mark-two-headphones/desktop/image-product.jpg" %}"/>
             </div>
             <div class="cart-card__content">
-              <p class="paragraph paragraph--bold">XX99 MK II</p>
-              <p class="paragraph paragraph--bold paragraph--opacity-50">$ 2,999</p>
+              <p class="paragraph paragraph--bold">{{ item.name }}</p>
+              <p class="paragraph paragraph--bold paragraph--opacity-50">$ {{ item.price }}</p>
             </div>
             <div class="counter cart-card__counter">
               <button class="subtitle subtitle--opacity-25 counter__item counter__item--button">-</button>
@@ -37,38 +38,7 @@
             </div>
           </article>
         </li>
-        <li>
-          <article class="cart-card">
-            <div class="cart-card__picture">
-              <img class="image" src="{% static "products/assets/product-xx99-mark-two-headphones/desktop/image-product.jpg" %}"/>
-            </div>
-            <div class="cart-card__content">
-              <p class="paragraph paragraph--bold">XX99 MK II</p>
-              <p class="paragraph paragraph--bold paragraph--opacity-50">$ 2,999</p>
-            </div>
-            <div class="counter cart-card__counter">
-              <button class="subtitle subtitle--opacity-25 counter__item counter__item--button">-</button>
-              <p class="subtitle counter__number counter__item">1</p>
-              <button class="subtitle subtitle--opacity-25 counter__item counter__item--button">+</button>
-            </div>
-          </article>
-        </li>
-        <li>
-          <article class="cart-card">
-            <div class="cart-card__picture">
-              <img class="image" src="{% static "products/assets/product-xx99-mark-two-headphones/desktop/image-product.jpg" %}"/>
-            </div>
-            <div class="cart-card__content">
-              <p class="paragraph paragraph--bold">XX99 MK II</p>
-              <p class="paragraph paragraph--bold paragraph--opacity-50">$ 2,999</p>
-            </div>
-            <div class="counter cart-card__counter">
-              <button class="subtitle subtitle--opacity-25 counter__item counter__item--button">-</button>
-              <p class="subtitle counter__number counter__item">1</p>
-              <button class="subtitle subtitle--opacity-25 counter__item counter__item--button">+</button>
-            </div>
-          </article>
-        </li>
+        {% endfor %}
       </ul>
       <div class="cart__footer">
         <div class="paragraph paragraph--space-between">
@@ -144,16 +114,16 @@
             </p>
             <p class="h6">$ {{ product.price }}</p>
 
-            <form class="content__buttons" method="POST" action="{% url 'products:product' category=product.category slug=product.slug %}">
+            <form method="POST" enctype="multipart/form-data" class="content__buttons">
               {% csrf_token %}
-              <div class="counter">
-                <button  type="button"id="decrement" class="subtitle subtitle--opacity-25 counter__item counter__item--button">-</button>
-                <p id="count" class="subtitle counter__number counter__item">1</p>
-                <button type="button" id="increment" class="subtitle subtitle--opacity-25 counter__item counter__item--button">+</button>
-              </div>
-              <input id="count-input" type="hidden"  min="1" value=1 name="quantity">
-              <input type="submit" class="button button--primary" value="Add to cart" />
-          </form>
+              <counter-button id="{{ product.id }}" class="counter">
+                <input id="counter-value-{{ product.id }}" min="1" value="1" type="hidden" name="quantity"/>
+                <button type="button" id="decrement-button-{{ product.id }}" class="subtitle subtitle--opacity-25 counter__item counter__item--button">-</button>
+                <p id="counter-text-{{ product.id }}" class="subtitle counter__number counter__item">1</p>
+                <button type="button" id="increment-button-{{ product.id }}" class="subtitle subtitle--opacity-25 counter__item counter__item--button">+</button>
+              </counter-button>
+              <input class="button button--primary" value="Add to cart" type="submit">
+            </form>
         </article>
     </article>
     <section class="information">

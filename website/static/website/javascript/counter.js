@@ -1,41 +1,26 @@
-const template = document.createElement('template');
-template.innerHTML = /* html */`
-    <style type="text/css">
-        @import "static/website/css/dist/main.css";
-    </style>
-    <button id="decrement" class="subtitle subtitle--opacity-25 counter__item counter__item--button">-</button>
-    <p id="count" class="subtitle counter__number counter__item"></p>
-    <button id="increment" class="subtitle subtitle--opacity-25 counter__item counter__item--button">+</button>
-`;
 export class CounterButton extends HTMLElement {
     constructor() {
         super();
-        this.count = 0;
-        this.attachShadow({ mode: 'open' });
+        this.count = 1;
     }
-
     connectedCallback() {
-        this.shadowRoot.appendChild(template.content.cloneNode(true));
-        this.shadowRoot.getElementById('increment').onclick = () => this.handleClickIncrement();
-        this.shadowRoot.getElementById('decrement').onclick = () => this.handleClickDecrement();
-        this.update(this.count);
+        document.getElementById(`increment-button-${this.id}`).onclick = () => this.handleClickIncrement(this.id);
+        document.getElementById(`decrement-button-${this.id}`).onclick = () => this.handleClickDecrement(this.id);
     }
 
-    update() {
-        this.shadowRoot.getElementById('count').innerText = this.count;
-        this.shadowRoot.getElementById('count-input').value = this.count;
+    handleClickIncrement(id) {
+        this.count++;
+        document.getElementById(`counter-text-${id}`).innerText = this.count;
+        document.getElementById(`counter-value-${id}`).value = this.count;
     }
 
-    handleClickIncrement() {
-        this.update(this.count++);
-    }
-
-    handleClickDecrement() {
+    handleClickDecrement(id) {
         if (this.count > 1) {
-            this.update(this.count--);
+            this.count--;
+            document.getElementById(`counter-text-${id}`).innerText = this.count;
+            document.getElementById(`counter-value-${id}`).value = this.count;
         }
     }
-
 }
 
 customElements.define('counter-button', CounterButton);

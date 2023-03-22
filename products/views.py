@@ -29,20 +29,24 @@ class ProductDetailView(TemplateView):
 
     def get_context_data(self, category, slug, **kwargs):
         context = super().get_context_data(**kwargs)
+        customer, created = Customer.objects.get_or_create(
+            device=self.request.COOKIES["device"]
+        )
+        order, created = Order.objects.get_or_create(customer=customer, complete=False)
+        print(order)
         context["product"] = Product.objects.get(slug=slug)
         return context
 
     def post(self, request, slug, category):
-        print(request.POST["quantity"])
-        """
         product = Product.objects.get(slug=slug)
-        customer = Customer.objects.get_or_create(device=request.COOKIES["device"])
-
-        order = Order.objects.get_or_create(customer=customer, complete=False)
+        customer, created = Customer.objects.get_or_create(
+            device=request.COOKIES["device"]
+        )
+        order, created = Order.objects.get_or_create(customer=customer, complete=False)
         orderItem, created = OrderItem.objects.get_or_create(
             order=order, product=product
         )
         orderItem.quantity = request.POST["quantity"]
         orderItem.save()
-        """
+
         return redirect(f"/{category}/{slug}")
