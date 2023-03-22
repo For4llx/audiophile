@@ -10,6 +10,7 @@
   <link rel="icon" type="image/png" sizes="32x32" href="{% static "website/assets/favicon-32x32.png" %}">
   <link rel="stylesheet" href="{% static 'website/css/dist/main.css' %}">
   <script type="module" src="{% static "website/javascript/main.js" %}" defer></script>
+  <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
 
   <title>Frontend Mentor | Audiophile e-commerce website</title>
 </head>
@@ -21,54 +22,25 @@
         <button class="paragraph paragraph--underline paragraph--opacity-50">Remove all</button>
       </div>
       <ul class="cart__list">
+        {% for item in order.orderitem_set.all %}
         <li>
           <article class="cart-card">
             <div class="cart-card__picture">
-              <img class="image" src="{% static "products/assets/product-xx99-mark-two-headphones/desktop/image-product.jpg" %}"/>
+              <img class="image" src="{% static "products/"|add:item.product.image.desktop %}"/>
             </div>
             <div class="cart-card__content">
-              <p class="paragraph paragraph--bold">XX99 MK II</p>
-              <p class="paragraph paragraph--bold paragraph--opacity-50">$ 2,999</p>
+              <p class="paragraph paragraph--bold">{{ item.product.name }}</p>
+              <p class="paragraph paragraph--bold paragraph--opacity-50">$ {{ item.product.price }}</p>
             </div>
-            <div class="counter cart-card__counter">
-              <button class="subtitle subtitle--opacity-25 counter__item counter__item--button">-</button>
-              <p class="subtitle counter__number counter__item">1</p>
-              <button class="subtitle subtitle--opacity-25 counter__item counter__item--button">+</button>
-            </div>
+            <counter-button id="{{ item.product.id }}" class="counter cart-card__counter">
+              <input id="counter-value-{{ item.product.id }}" min="1" value="1" type="hidden" name="quantity"/>
+              <button type="button" id="decrement-button-{{ item.product.id }}" class="subtitle subtitle--opacity-25 counter__item counter__item--button">-</button>
+              <p id="counter-text-{{ item.product.id }}" class="subtitle counter__number counter__item">{{ item.quantity }}</p>
+              <button type="button" id="increment-button-{{ item.product.id }}" class="subtitle subtitle--opacity-25 counter__item counter__item--button">+</button>
+            </counter-button>
           </article>
         </li>
-        <li>
-          <article class="cart-card">
-            <div class="cart-card__picture">
-              <img class="image" src="{% static "products/assets/product-xx99-mark-two-headphones/desktop/image-product.jpg" %}"/>
-            </div>
-            <div class="cart-card__content">
-              <p class="paragraph paragraph--bold">XX99 MK II</p>
-              <p class="paragraph paragraph--bold paragraph--opacity-50">$ 2,999</p>
-            </div>
-            <div class="counter cart-card__counter">
-              <button class="subtitle subtitle--opacity-25 counter__item counter__item--button">-</button>
-              <p class="subtitle counter__number counter__item">1</p>
-              <button class="subtitle subtitle--opacity-25 counter__item counter__item--button">+</button>
-            </div>
-          </article>
-        </li>
-        <li>
-          <article class="cart-card">
-            <div class="cart-card__picture">
-              <img class="image" src="{% static "products/assets/product-xx99-mark-two-headphones/desktop/image-product.jpg" %}"/>
-            </div>
-            <div class="cart-card__content">
-              <p class="paragraph paragraph--bold">XX99 MK II</p>
-              <p class="paragraph paragraph--bold paragraph--opacity-50">$ 2,999</p>
-            </div>
-            <div class="counter cart-card__counter">
-              <button class="subtitle subtitle--opacity-25 counter__item counter__item--button">-</button>
-              <p class="subtitle counter__number counter__item">1</p>
-              <button class="subtitle subtitle--opacity-25 counter__item counter__item--button">+</button>
-            </div>
-          </article>
-        </li>
+        {% endfor %}
       </ul>
       <div class="cart__footer">
         <div class="paragraph paragraph--space-between">

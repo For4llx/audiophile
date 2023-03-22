@@ -10,6 +10,8 @@ class ProductIndexView(TemplateView):
 
     def get_context_data(self, category, **kwargs):
         context = super().get_context_data(**kwargs)
+        customer = Customer.objects.get_or_create(device=self.request.COOKIES["device"])
+        context["order"] = Order.objects.get(customer=customer, complete=False)
         if category == "earphones":
             context["products"] = Product.objects.filter(category="earphones")
             context["category"] = "earphones"
@@ -29,11 +31,8 @@ class ProductDetailView(TemplateView):
 
     def get_context_data(self, category, slug, **kwargs):
         context = super().get_context_data(**kwargs)
-        customer, created = Customer.objects.get_or_create(
-            device=self.request.COOKIES["device"]
-        )
-        order, created = Order.objects.get_or_create(customer=customer, complete=False)
-        print(order)
+        customer = Customer.objects.get(device=self.request.COOKIES["device"])
+        context["order"] = Order.objects.get(customer=customer, complete=False)
         context["product"] = Product.objects.get(slug=slug)
         return context
 
@@ -48,5 +47,15 @@ class ProductDetailView(TemplateView):
         )
         orderItem.quantity = request.POST["quantity"]
         orderItem.save()
+
+        return redirect(f"/{category}/{slug}")
+
+    def delete(self, request, slug, category):
+        customer, created = Customer.objects.get_or_create(
+            device=request.COOKIES["device"]
+        )
+        order = Order.objects.get(customer=customer, complete=False)
+        orderItem = OrderItem.objects.filter(order=order)
+        orderItem.delete()
 
         return redirect(f"/{category}/{slug}")
