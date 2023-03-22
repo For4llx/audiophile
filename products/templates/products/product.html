@@ -143,12 +143,17 @@
               {{ product.description }}
             </p>
             <p class="h6">$ {{ product.price }}</p>
-            <div class="content__buttons">
-              <counter-button class="counter"></counter-button>
-                <button class="button button--primary">
-                    Add to cart
-                </button>
-            </div>
+
+            <form class="content__buttons" method="POST" action="{% url 'products:product' category=product.category slug=product.slug %}">
+              {% csrf_token %}
+              <div class="counter">
+                <button  type="button"id="decrement" class="subtitle subtitle--opacity-25 counter__item counter__item--button">-</button>
+                <p id="count" class="subtitle counter__number counter__item">1</p>
+                <button type="button" id="increment" class="subtitle subtitle--opacity-25 counter__item counter__item--button">+</button>
+              </div>
+              <input id="count-input" type="hidden"  min="1" value=1 name="quantity">
+              <input type="submit" class="button button--primary" value="Add to cart" />
+          </form>
         </article>
     </article>
     <section class="information">

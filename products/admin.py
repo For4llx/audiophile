@@ -6,8 +6,21 @@ from .models import (
     Include,
     Gallery,
     Product,
+    Order,
+    OrderItem,
+    Customer,
 )
 
 admin.site.register(
-    [ProductImage, CategoryImage, GalleryImage, Include, Gallery, Product]
+    [
+        ProductImage,
+        CategoryImage,
+        GalleryImage,
+        Include,
+        Gallery,
+        Product,
+        Order,
+        OrderItem,
+        Customer,
+    ]
 )

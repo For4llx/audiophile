@@ -23,6 +23,7 @@ export class CounterButton extends HTMLElement {
 
     update() {
         this.shadowRoot.getElementById('count').innerText = this.count;
+        this.shadowRoot.getElementById('count-input').value = this.count;
     }
 
     handleClickIncrement() {

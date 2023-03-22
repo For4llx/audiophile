@@ -1,6 +1,6 @@
-from django.shortcuts import render
-from django.views.generic import TemplateView
-from .models import Product
+from django.shortcuts import render, redirect
+from django.views.generic import TemplateView, View
+from .models import Product, Customer, Order, OrderItem
 
 
 class ProductIndexView(TemplateView):
@@ -31,3 +31,18 @@ class ProductDetailView(TemplateView):
         context = super().get_context_data(**kwargs)
         context["product"] = Product.objects.get(slug=slug)
         return context
+
+    def post(self, request, slug, category):
+        print(request.POST["quantity"])
+        """
+        product = Product.objects.get(slug=slug)
+        customer = Customer.objects.get_or_create(device=request.COOKIES["device"])
+
+        order = Order.objects.get_or_create(customer=customer, complete=False)
+        orderItem, created = OrderItem.objects.get_or_create(
+            order=order, product=product
+        )
+        orderItem.quantity = request.POST["quantity"]
+        orderItem.save()
+        """
+        return redirect(f"/{category}/{slug}")
