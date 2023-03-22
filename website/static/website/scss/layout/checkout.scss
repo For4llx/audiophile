@@ -1,0 +1,29 @@
+@use "../abstracts/index" as *;
+
+.checkout {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1.875rem;
+    @include container;
+
+    &__form {
+        display: flex;
+        flex-direction: column;
+        gap: 3.313rem;
+        padding-top: 3rem;
+        padding-bottom: 3rem;
+        padding-left: 3.375rem;
+        padding-right: 3.375rem;
+        width: 730px;
+        border-radius: var(--radius);
+        background-color: var(--white);
+    }
+
+    @include medium {
+        flex-direction: column;
+
+        &__form {
+            width: 100%;
+        }
+    }
+}

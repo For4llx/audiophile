@@ -1,0 +1,7 @@
+@use "../abstracts/index" as *;
+
+.receipt {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}

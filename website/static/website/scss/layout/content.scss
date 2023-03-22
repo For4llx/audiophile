@@ -1,0 +1,60 @@
+@use "../abstracts/index" as *;
+
+.content {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 1.5rem;
+    border-radius: 0 0 var(--radius) var(--radius);
+
+    &__title {
+        display: flex;
+        flex-direction: column;
+    }
+
+    &__paragraph {
+        max-width: 349px;
+        @include body;
+
+        &--wide {
+            max-width: 445px;
+        }
+    }
+
+    &__buttons {
+        display: flex;
+        gap: 1rem;
+    }
+
+    &__button {
+        margin-top: 1rem;
+    }
+
+    @include medium {
+        text-align: center;
+        align-items: center;
+
+        &--left {
+            align-items: flex-start;
+            text-align: left;
+        }
+
+        &__paragraph {
+            &--wide {
+                max-width: 572px;
+            }
+        }
+    }
+
+    @include small {
+        &__paragraph {
+            &--wide {
+                max-width: 327px;
+            }
+        }
+
+        &__button {
+            margin-top: 0;
+        }
+    }
+}

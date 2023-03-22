@@ -3,16 +3,25 @@
 .header {
     display: flex;
     flex-direction: column;
-    gap: 7rem;
     width: 100%;
     @include container;
+    background-color: var(--black);
+
+    &__title {
+        padding: 6.125rem;
+        text-align: center;
+    }
+
+    &__content {
+        padding-top: 8rem;
+        padding-bottom: 8rem;
+    }
 
     &--hero {
         background-image: url("/static/website/assets/home/desktop/image-hero.jpg");
         background-repeat: no-repeat;
         background-size: cover;
         background-position: center;
-        height: 729px;
     }
 
     @include medium {

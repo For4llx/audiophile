@@ -1,11 +1,20 @@
 @use "../abstracts/index" as *;
 
 .paragraph {
-    opacity: 50%;
     @include body;
+
+    &--underline {
+        text-decoration: underline;
+    }
 
     &--bold {
         font-weight: bold;
+    }
+
+    &--space-between {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
     }
 
     &--white {
@@ -14,5 +23,17 @@
 
     &--black {
         color: var(--black);
+    }
+
+    &--high-opacity {
+        opacity: 75%;
+    }
+
+    &--opacity-50 {
+        opacity: 50%;
+    }
+
+    &--upper {
+        text-transform: uppercase;
     }
 }

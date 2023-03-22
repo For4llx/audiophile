@@ -1,0 +1,9 @@
+@use "../abstracts/index" as *;
+
+.h2 {
+    @include h2;
+
+    &--white {
+        color: var(--white);
+    }
+}

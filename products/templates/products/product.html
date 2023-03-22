@@ -1,0 +1,299 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;700&display=swap" rel="stylesheet">
+  <link rel="icon" type="image/png" sizes="32x32" href="{% static "website/assets/favicon-32x32.png" %}">
+  <link rel="stylesheet" href="{% static 'website/css/dist/main.css' %}">
+  <script type="module" src="{% static "website/javascript/main.js" %}" defer></script>
+
+  <title>Frontend Mentor | Audiophile e-commerce website</title>
+</head>
+<body>
+  <div id="cart" class="overlay">
+    <div class="cart">
+      <div class="cart__header">
+        <p class="h6">CART (3)</p>
+        <button class="paragraph paragraph--underline paragraph--opacity-50">Remove all</button>
+      </div>
+      <ul class="cart__list">
+        {% for item in items %}
+        <li>
+          <article class="cart-card">
+            <div class="cart-card__picture">
+              <img class="image" src="{% static "products/assets/product-xx99-mark-two-headphones/desktop/image-product.jpg" %}"/>
+            </div>
+            <div class="cart-card__content">
+              <p class="paragraph paragraph--bold">{{ item.name }}</p>
+              <p class="paragraph paragraph--bold paragraph--opacity-50">$ {{ item.price }}</p>
+            </div>
+            <div class="counter cart-card__counter">
+              <button class="subtitle subtitle--opacity-25 counter__item counter__item--button">-</button>
+              <p class="subtitle counter__number counter__item">1</p>
+              <button class="subtitle subtitle--opacity-25 counter__item counter__item--button">+</button>
+            </div>
+          </article>
+        </li>
+        {% endfor %}
+      </ul>
+      <div class="cart__footer">
+        <div class="paragraph paragraph--space-between">
+          <p class="paragraph paragraph--opacity-50 paragraph--upper">Total</p>
+          <p class="paragraph paragraph--bold">$ 5,396</p>
+        </div>
+        <button class="button button--wide button--primary">Checkout</button>
+      </div>
+    </div>
+  </div>
+  <div id="menu" class="overlay overlay--no-padding">
+    <div class="background background--white">
+      <nav class="category">
+        <ul class="category__menu">
+          <li class="category__item">
+            <a href="#" class="category__link category__link--headphones">
+              <span>Headphones</span>
+              <span class="category__button">Shop</span>
+            </a>
+          </li>
+          <li class="category__item">
+            <a href="#" class="category__link category__link--speakers">
+              <span>Speakers</span>
+              <span class="category__button">Shop</span>
+            </a>
+          </li>
+          <li class="category__item category__item--earphones">
+            <a href="#" class="category__link category__link--earphones">
+              <span>Earphones</span>
+              <span class="category__button">Shop</span>
+            </a>
+          </li>
+        </ul>
+      </nav>
+    </div>
+  </div>
+  <header class="header">
+    <nav class="navigation">
+      <hamburger-button class="link navigation__hamburger">
+        <svg width="16" height="15" xmlns="http://www.w3.org/2000/svg"><g fill-rule="evenodd"><path d="M0 0h16v3H0zM0 6h16v3H0zM0 12h16v3H0z"/></g></svg>
+      </hamburger-button>
+      <figure>
+        <img src="{% static "website/assets/shared/desktop/logo.svg" %}" alt="Audiophile's logo" />
+      </figure>
+      <ul class="menu">
+        <li><a class="link" href="/">Home</a></li>
+        <li><a class="link" href="{% url 'products:products' category="headphones" %}">Headphones</a></li>
+        <li><a class="link" href="{% url 'products:products' category="speakers" %}">Speakers</a></li>
+        <li><a class="link" href="{% url 'products:products' category="earphones" %}">Earphones</a></li>
+      </ul>
+      <cart-button class="link navigation__cart">
+        <svg width="23" height="20" xmlns="http://www.w3.org/2000/svg"><path d="M8.625 15.833c1.132 0 2.054.935 2.054 2.084 0 1.148-.922 2.083-2.054 2.083-1.132 0-2.054-.935-2.054-2.083 0-1.15.922-2.084 2.054-2.084zm9.857 0c1.132 0 2.054.935 2.054 2.084 0 1.148-.922 2.083-2.054 2.083-1.132 0-2.053-.935-2.053-2.083 0-1.15.92-2.084 2.053-2.084zm-9.857 1.39a.69.69 0 00-.685.694.69.69 0 00.685.694.69.69 0 00.685-.694.69.69 0 00-.685-.695zm9.857 0a.69.69 0 00-.684.694.69.69 0 00.684.694.69.69 0 00.685-.694.69.69 0 00-.685-.695zM4.717 0c.316 0 .59.215.658.517l.481 2.122h16.47a.68.68 0 01.538.262c.127.166.168.38.11.579l-2.695 9.236a.672.672 0 01-.648.478H7.41a.667.667 0 00-.673.66c0 .364.303.66.674.66h12.219c.372 0 .674.295.674.66 0 .364-.302.66-.674.66H7.412c-1.115 0-2.021-.889-2.021-1.98 0-.812.502-1.511 1.218-1.816L4.176 1.32H.674A.667.667 0 010 .66C0 .296.302 0 .674 0zm16.716 3.958H6.156l1.797 7.917h11.17l2.31-7.917z" fill-rule="nonzero"/></svg>
+      </cart-button>
+    </nav>
+  </header>
+  <main class="main">
+    <article class="card card--row">
+        <picture class="card__picture">
+            <source class="image" media="(min-width:769px)" srcset="{% static "products/"|add:product.image.desktop %}" />
+            <source class="image" media="(min-width:481px)" srcset="{% static "products/"|add:product.image.tablet %}" />
+            <source class="image" srcset="{% static "products/"|add:product.image.mobile %}" />
+            <img class="image" src="{% static "products/"|add:product.image.desktop %}" />
+        </picture>
+        <article class="content content--left card__content">
+            {% if product.new %}
+            <p class="overline overline--primary">New product</p>
+            {% endif %}
+            <h1 class="h2 content__title">
+                {{ product.name }}
+            </h1>
+            <p class="paragraph paragraph--opacity-50 paragraph--black content__paragraph content__paragraph--wide">
+              {{ product.description }}
+            </p>
+            <p class="h6">$ {{ product.price }}</p>
+
+            <form method="POST" enctype="multipart/form-data" class="content__buttons">
+              {% csrf_token %}
+              <counter-button id="{{ product.id }}" class="counter">
+                <input id="counter-value-{{ product.id }}" min="1" value="1" type="hidden" name="quantity"/>
+                <button type="button" id="decrement-button-{{ product.id }}" class="subtitle subtitle--opacity-25 counter__item counter__item--button">-</button>
+                <p id="counter-text-{{ product.id }}" class="subtitle counter__number counter__item">1</p>
+                <button type="button" id="increment-button-{{ product.id }}" class="subtitle subtitle--opacity-25 counter__item counter__item--button">+</button>
+              </counter-button>
+              <input class="button button--primary" value="Add to cart" type="submit">
+            </form>
+        </article>
+    </article>
+    <section class="information">
+        <article class="content content--left information__features">
+            <h2 class="h3">Features</h2>
+            <div class="paragraph paragraph--opacity-50 information__content">
+            {{ product.features|linebreaks }}
+            </div>
+        </article>
+        <article class="content information__items">
+            <h2 class="h3">In the box</h2>
+            <ul class="list list--gap-1">
+              {% for include in product.include.all %}
+                <li class="list__item">
+                    <span class="paragraph paragraph--bold emphasis">{{ include.quantity }}x</span>
+                    <p class="paragraph paragraph--opacity-50">{{ include.item }}</p>
+                </li>
+              {% endfor %}
+            </ul>
+        </article>
+    </section>
+    <div class="product-gallery">
+        <picture class="product-gallery__one">
+            <source class="image" media="(min-width:769px)" srcset="{% static "products/"|add:product.gallery.first.desktop %}" />
+            <source class="image" media="(min-width:481px)" srcset="{% static "products/"|add:product.gallery.first.tablet %}" />
+            <source class="image" srcset="{% static "products/"|add:product.gallery.first.mobile %}" />
+            <img class="image" src="{% static "products/"|add:product.gallery.first.desktop %}" />
+        </picture>
+        <picture class="product-gallery__two">
+            <source class="image" media="(min-width:769px)" srcset="{% static "products/"|add:product.gallery.second.desktop %}" />
+            <source class="image" media="(min-width:481px)" srcset="{% static "products/"|add:product.gallery.second.tablet %}" />
+            <source class="image" srcset="{% static "products/"|add:product.gallery.second.mobile %}" />
+            <img class="image" src="{% static "products/"|add:product.gallery.second.desktop %}" />
+        </picture>
+        <picture class="product-gallery__three">
+            <source class="image" media="(min-width:769px)" srcset="{% static "products/"|add:product.gallery.third.desktop %}" />
+            <source class="image" media="(min-width:481px)" srcset="{% static "products/"|add:product.gallery.third.tablet %}" />
+            <source class="image" srcset="{% static "products/"|add:product.gallery.third.mobile %}" />
+            <img class="image" src="{% static "products/"|add:product.gallery.third.desktop %}" />
+        </picture>
+    </div>
+    <aside class="aside">
+        <h3 class="h3">You may also like</h3>
+        <ul class="list list--row">
+            <li>
+                <article class="other">
+                    <picture class="other__picture">
+                        <source class="image" media="(min-width:769px)" srcset="{% static "products/assets/product-xx99-mark-two-headphones/desktop/image-product.jpg" %}" />
+                        <source class="image" media="(min-width:481px)" srcset="{% static "products/assets/product-xx99-mark-two-headphones/tablet/image-product.jpg" %}" />
+                        <source class="image" srcset="{% static "products/assets/product-xx99-mark-two-headphones/mobile/image-product.jpg" %}" />
+                        <img class="image" src="{% static "products/assets/product-xx99-mark-two-headphones/desktop/image-product.jpg" %}" />
+                    </picture>
+                    <h4 class="h5">XX99 Mark II</h4>
+                    <a class="button button--primary" href="#">See product</a>
+                </article>
+            </li>
+            <li>
+              <article class="other">
+                  <picture class="other__picture">
+                      <source class="image" media="(min-width:769px)" srcset="{% static "products/assets/product-xx99-mark-two-headphones/desktop/image-product.jpg" %}" />
+                      <source class="image" media="(min-width:481px)" srcset="{% static "products/assets/product-xx99-mark-two-headphones/tablet/image-product.jpg" %}" />
+                      <source class="image" srcset="{% static "products/assets/product-xx99-mark-two-headphones/mobile/image-product.jpg" %}" />
+                      <img class="image" src="{% static "products/assets/product-xx99-mark-two-headphones/desktop/image-product.jpg" %}" />
+                  </picture>
+                  <h4 class="h5">XX99 Mark II</h4>
+                  <a class="button button--primary" href="#">See product</a>
+              </article>
+          </li>
+          <li>
+            <article class="other">
+                <picture class="other__picture">
+                    <source class="image" media="(min-width:769px)" srcset="{% static "products/assets/product-xx99-mark-two-headphones/desktop/image-product.jpg" %}" />
+                    <source class="image" media="(min-width:481px)" srcset="{% static "products/assets/product-xx99-mark-two-headphones/tablet/image-product.jpg" %}" />
+                    <source class="image" srcset="{% static "products/assets/product-xx99-mark-two-headphones/mobile/image-product.jpg" %}" />
+                    <img class="image" src="{% static "products/assets/product-xx99-mark-two-headphones/desktop/image-product.jpg" %}" />
+                </picture>
+                <h4 class="h5">XX99 Mark II</h4>
+                <a class="button button--primary" href="#">See product</a>
+            </article>
+        </li>
+        </ul>
+    </aside>
+    <nav class="category">
+      <ul class="category__menu">
+        <li class="category__item">
+          <a href="{% url 'products:products' category="headphones" %}" class="category__link category__link--headphones">
+            <span>Headphones</span>
+            <span class="category__button">Shop</span>
+          </a>
+        </li>
+        <li class="category__item">
+          <a href="{% url 'products:products' category="speakers" %}" class="category__link category__link--speakers">
+            <span>Speakers</span>
+            <span class="category__button">Shop</span>
+          </a>
+        </li>
+        <li class="category__item category__item--earphones">
+          <a href="{% url 'products:products' category="earphones" %}" class="category__link category__link--earphones">
+            <span>Earphones</span>
+            <span class="category__button">Shop</span>
+          </a>
+        </li>
+      </ul>
+    </nav>
+    <section class="about">
+      <article class="article about__article">
+        <h2 class="h2 about__title">
+          Bringing you the <em class="emphasis">best</em> audio gear
+        </h2>
+        <p class="paragraph paragraph--opacity-50 paragraph--black">
+          Located at the heart of New York City, Audiophile is the premier store for high end headphones, 
+          earphones, speakers, and audio accessories. We have a large showroom and luxury demonstration 
+          rooms available for you to browse and experience a wide range of our products. Stop by our store 
+          to meet some of the fantastic people who make Audiophile the best place to buy your portable 
+          audio equipment.
+        </p>
+      </article>
+      <picture class="about__picture">
+        <source class="image" media="(min-width:769px)" srcset="{% static "website/assets/shared/desktop/image-best-gear.jpg" %}"/>
+        <source class="image" media="(min-width:481px)" srcset="{% static "website/assets/shared/tablet/image-best-gear.jpg" %}"/>
+        <source class="image"  srcset="{% static "website/assets/shared/mobile/image-best-gear.jpg" %}"/>
+        <img class="image" src="{% static "website/assets/shared/desktop/image-best-gear.jpg" %}" alt="A young man listening to music" />
+      </picture>
+    </section>
+  </main>
+  <footer class="footer">
+    <nav class="navigation footer__navigation">
+      <figure>
+        <img src="{% static "website/assets/shared/desktop/logo.svg" %}" alt="Audiophile's logo" />
+      </figure>
+      <ul class="menu menu--display">
+        <li><a class="link" href="/">Home</a></li>
+        <li><a class="link" href="{% url 'products:products' category="hearphones" %}">Headphones</a></li>
+        <li><a class="link" href="{% url 'products:products' category="speakers" %}">Speakers</a></li>
+        <li><a class="link" href="{% url 'products:products' category="earphones" %}">Earphones</a></li>
+      </ul>
+    </nav>
+    <div class="footer__content">
+      <p class="paragraph paragraph--opacity-50 paragraph--white footer__paragraph">
+        Audiophile is an all in one stop to fulfill your audio needs. We're a small team of music lovers 
+        and sound specialists who are devoted to helping you get the most out of personal audio. Come and 
+        visit our demo facility - we’re open 7 days a week.
+      </p>
+      <nav class="footer__social">
+        <ul class="social">
+          <li>
+            <a class="link" href="#">
+              <svg width="24" height="24" xmlns="http://www.w3.org/2000/svg">
+                <path d="M22.675 0H1.325C.593 0 0 .593 0 1.325v21.351C0 23.407.593 24 1.325 24H12.82v-9.294H9.692v-3.622h3.128V8.413c0-3.1 1.893-4.788 4.659-4.788 1.325 0 2.463.099 2.795.143v3.24l-1.918.001c-1.504 0-1.795.715-1.795 1.763v2.313h3.587l-.467 3.622h-3.12V24h6.116c.73 0 1.323-.593 1.323-1.325V1.325C24 .593 23.407 0 22.675 0z" fill-rule="nonzero"/>
+              </svg>
+            </a>
+          </li>
+          <li>
+            <a class="link" href="#">
+              <svg width="24" height="20" xmlns="http://www.w3.org/2000/svg">
+                <path d="M24 2.557a9.83 9.83 0 01-2.828.775A4.932 4.932 0 0023.337.608a9.864 9.864 0 01-3.127 1.195A4.916 4.916 0 0016.616.248c-3.179 0-5.515 2.966-4.797 6.045A13.978 13.978 0 011.671 1.149a4.93 4.93 0 001.523 6.574 4.903 4.903 0 01-2.229-.616c-.054 2.281 1.581 4.415 3.949 4.89a4.935 4.935 0 01-2.224.084 4.928 4.928 0 004.6 3.419A9.9 9.9 0 010 17.54a13.94 13.94 0 007.548 2.212c9.142 0 14.307-7.721 13.995-14.646A10.025 10.025 0 0024 2.557z" fill-rule="nonzero"/>
+              </svg>
+            </a>
+          </li>
+          <li>
+            <a class="link" href="#">
+              <svg width="24" height="24" xmlns="http://www.w3.org/2000/svg">
+                <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z" fill-rule="nonzero"/>
+              </svg>
+            </a>
+          </li>
+        </ul>
+      </nav>
+      <p class="paragraph paragraph--opacity-50 paragraph--white paragraph--bold footer__copyright">Copyright 2021. All Rights Reserved</p>
+    </div>
+  </footer>
+</body>
+</html>

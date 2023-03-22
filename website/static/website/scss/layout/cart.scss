@@ -1,0 +1,39 @@
+@use "../abstracts/index" as *;
+
+.cart {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    background-color: var(--white);
+    border-radius: var(--radius);
+    height: fit-content;
+    width: 377px;
+    padding: 2rem;
+
+    &--summary {
+        width: 350px;
+    }
+
+    &__header {
+        display: flex;
+        justify-content: space-between;
+    }
+
+    &__footer {
+        display: flex;
+        flex-direction: column;
+        gap: 1.5rem;
+    }
+
+    &__list {
+        display: flex;
+        flex-direction: column;
+        gap: 1.5rem;
+    }
+
+    @include medium {
+        &--summary {
+            width: 100%;
+        }
+    }
+}

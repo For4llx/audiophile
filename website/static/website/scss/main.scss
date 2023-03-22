@@ -4,21 +4,49 @@
 
 
 @use "component/button";
-@use "component/header-2";
+@use "component/background";
+@use "component/h1";
+@use "component/h2";
+@use "component/h3";
+@use "component/h4";
+@use "component/h5";
+@use "component/h6";
 @use "component/paragraph";
 @use "component/emphasis";
 @use "component/image";
 @use "component/link";
+@use "component/overline";
+@use "component/subtitle";
+@use "component/list";
+@use "component/label";
+@use "component/overlay";
+@use "component/radio";
+@use "component/input";
 
 @use "layout/header";
+@use "layout/confirmation";
+@use "layout/receipt";
 @use "layout/navigation";
+@use "layout/checkout";
+@use "layout/payment";
 @use "layout/menu";
+@use "layout/billing";
+@use "layout/shipping";
 @use "layout/card";
+@use "layout/aside";
+@use "layout/content";
+@use "layout/field";
+@use "layout/counter";
 @use "layout/category";
 @use "layout/about";
+@use "layout/other";
 @use "layout/article";
+@use "layout/information";
+@use "layout/cart";
+@use "layout/cart-card";
 @use "layout/main";
 @use "layout/social";
 @use "layout/footer";
 
 @use "pages/home-gallery";
+@use "pages/product-gallery";

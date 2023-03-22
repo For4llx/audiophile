@@ -1,0 +1,42 @@
+@use "../abstracts/index" as *;
+
+.product-gallery {
+    display: grid;
+    grid-template-columns: 1fr 1.5fr;
+    grid-template-rows: repeat(2, 1fr);
+    gap: 2rem;
+    @include container;
+
+    &__one {
+        grid-column: 1;
+        grid-row: 1;
+    }
+
+    &__two {
+        grid-column: 1;
+        grid-row: 2;
+    }
+
+    &__three {
+        grid-column: 2;
+        grid-row: 1 / span 2;
+    }
+
+    @include small {
+        display: flex;
+        flex-direction: column;
+        gap: 1.25rem;
+
+        &__one {
+            height: 174px;
+        }
+
+        &__two {
+            height: 174px;
+        }
+
+        &__three {
+            height: 368px;
+        }
+    }
+}
