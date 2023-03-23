@@ -16,10 +16,10 @@ class BillingForm(forms.ModelForm):
                 attrs={"class": "input", "placeholder": "Alexei Ward"}
             ),
             "phone": forms.TextInput(
-                attrs={"class": "input", "placeholder": "alexei@mail.com"}
+                attrs={"class": "input", "placeholder": "+1 202-555-0136"}
             ),
             "email": forms.TextInput(
-                attrs={"class": "input", "placeholder": "+1 202-555-0136"}
+                attrs={"class": "input", "placeholder": "alexei@mail.com"}
             ),
         }
 

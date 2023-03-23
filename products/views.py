@@ -11,7 +11,7 @@ class ProductIndexView(TemplateView):
     def get_context_data(self, category, **kwargs):
         context = super().get_context_data(**kwargs)
         customer, created = Customer.objects.get_or_create(
-            device=self.request.COOKIES["device"]
+            device=self.request.COOKIES.get("device")
         )
         context["order"] = Order.objects.get(customer=customer, complete=False)
         if category == "earphones":
@@ -33,30 +33,42 @@ class ProductDetailView(TemplateView):
 
     def get_context_data(self, category, slug, **kwargs):
         context = super().get_context_data(**kwargs)
-        customer = Customer.objects.get(device=self.request.COOKIES["device"])
+        customer = Customer.objects.get(device=self.request.COOKIES.get("device"))
         context["order"] = Order.objects.get(customer=customer, complete=False)
         context["product"] = Product.objects.get(slug=slug)
         return context
 
     def post(self, request, slug, category):
-        product = Product.objects.get(slug=slug)
-        customer, created = Customer.objects.get_or_create(
-            device=request.COOKIES["device"]
-        )
-        order, created = Order.objects.get_or_create(customer=customer, complete=False)
-        orderItem, created = OrderItem.objects.get_or_create(
-            order=order, product=product
-        )
-        orderItem.quantity = request.POST["quantity"]
-        orderItem.save()
-
-        if self.request.POST.get("checkout") == "Checkout":
+        if request.POST.get("add") == "Add to cart":
+            product = Product.objects.get(slug=slug)
+            customer, created = Customer.objects.get_or_create(
+                device=self.request.COOKIES.get("device")
+            )
+            order, created = Order.objects.get_or_create(
+                customer=customer, complete=False
+            )
+            orderItem, created = OrderItem.objects.get_or_create(
+                order=order, product=product
+            )
+            orderItem.quantity = request.POST["quantity"]
+            orderItem.save()
+            return redirect(f"/{category}/{slug}")
+        else:
+            customer, created = Customer.objects.get_or_create(
+                device=self.request.COOKIES.get("device")
+            )
+            order, created = Order.objects.get_or_create(
+                customer=customer, complete=False
+            )
+            quantities = request.POST.getlist("quantity")
+            for index, item in enumerate(order.orderitem_set.all()):
+                item.quantity = quantities[index]
+                item.save()
             return redirect("/checkout")
-        return redirect(f"/{category}/{slug}")
 
     def delete(self, request, slug, category):
         customer, created = Customer.objects.get_or_create(
-            device=request.COOKIES["device"]
+            device=self.request.COOKIES.get("device")
         )
         order = Order.objects.get(customer=customer, complete=False)
         orderItem = OrderItem.objects.filter(order=order)

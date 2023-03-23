@@ -9,74 +9,43 @@
   <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;700&display=swap" rel="stylesheet">
   <link rel="icon" type="image/png" sizes="32x32" href="{% static "website/assets/favicon-32x32.png" %}">
   <link rel="stylesheet" href="{% static 'website/css/dist/main.css' %}">
-  
+  <script type="module" src="{% static "website/javascript/main.js" %}" defer></script>
+
   <title>Frontend Mentor | Audiophile e-commerce website</title>
 </head>
 <body class="background">
   <div id="cart" class="overlay">
-    <div class="cart">
+    <form method="POST" enctype="multipart/form-data" class="cart">
+      {% csrf_token %}
       <div class="cart__header">
         <p class="h6">CART (3)</p>
         <button class="paragraph paragraph--underline paragraph--opacity-50">Remove all</button>
       </div>
       <ul class="cart__list">
+        {% for item in order.orderitem_set.all %}
         <li>
           <article class="cart-card">
             <div class="cart-card__picture">
-              <img class="image" src="{% static "products/assets/product-xx99-mark-two-headphones/desktop/image-product.jpg" %}"/>
+              <img class="image" src="{% static "products/"|add:item.product.image.desktop %}"/>
             </div>
             <div class="cart-card__content">
-              <p class="paragraph paragraph--bold">XX99 MK II</p>
-              <p class="paragraph paragraph--bold paragraph--opacity-50">$ 2,999</p>
+              <p class="paragraph paragraph--bold">{{ item.product.name }}</p>
+              <p class="paragraph paragraph--bold paragraph--opacity-50">$ {{ item.product.price }}</p>
             </div>
-            <div class="counter cart-card__counter">
-              <button class="subtitle subtitle--opacity-25 counter__item counter__item--button">-</button>
-              <p class="subtitle counter__number counter__item">1</p>
-              <button class="subtitle subtitle--opacity-25 counter__item counter__item--button">+</button>
-            </div>
+            <counter-button data-style="../../static/website/css/dist/main.css" data-value="{{ item.quantity }}" id="counter" class="counter cart-card__counter">
+            </counter-button>
           </article>
         </li>
-        <li>
-          <article class="cart-card">
-            <div class="cart-card__picture">
-              <img class="image" src="{% static "products/assets/product-xx99-mark-two-headphones/desktop/image-product.jpg" %}"/>
-            </div>
-            <div class="cart-card__content">
-              <p class="paragraph paragraph--bold">XX99 MK II</p>
-              <p class="paragraph paragraph--bold paragraph--opacity-50">$ 2,999</p>
-            </div>
-            <div class="counter cart-card__counter">
-              <button class="subtitle subtitle--opacity-25 counter__item counter__item--button">-</button>
-              <p class="subtitle counter__number counter__item">1</p>
-              <button class="subtitle subtitle--opacity-25 counter__item counter__item--button">+</button>
-            </div>
-          </article>
-        </li>
-        <li>
-          <article class="cart-card">
-            <div class="cart-card__picture">
-              <img class="image" src="{% static "products/assets/product-xx99-mark-two-headphones/desktop/image-product.jpg" %}"/>
-            </div>
-            <div class="cart-card__content">
-              <p class="paragraph paragraph--bold">XX99 MK II</p>
-              <p class="paragraph paragraph--bold paragraph--opacity-50">$ 2,999</p>
-            </div>
-            <div class="counter cart-card__counter">
-              <button class="subtitle subtitle--opacity-25 counter__item counter__item--button">-</button>
-              <p class="subtitle counter__number counter__item">1</p>
-              <button class="subtitle subtitle--opacity-25 counter__item counter__item--button">+</button>
-            </div>
-          </article>
-        </li>
+        {% endfor %}
       </ul>
       <div class="cart__footer">
         <div class="paragraph paragraph--space-between">
           <p class="paragraph paragraph--opacity-50 paragraph--upper">Total</p>
           <p class="paragraph paragraph--bold">$ 5,396</p>
         </div>
-        <button class="button button--wide button--primary">Checkout</button>
+          <input type="submit" name="checkout" class="button button--wide button--primary" value="Checkout"/>
       </div>
-    </div>
+    </form>
   </div>
   <div id="menu" class="overlay overlay--no-padding">
     <div class="background background--white">
@@ -138,28 +107,28 @@
   </div>
   <header class="header">
     <nav class="navigation">
-      <button class="navigation__hamburger">
-        <img src="{% static "website/assets/shared/tablet/icon-hamburger.svg" %}" alt="menu" />
-      </button>
+      <hamburger-button class="link navigation__hamburger">
+        <svg width="16" height="15" xmlns="http://www.w3.org/2000/svg"><g fill-rule="evenodd"><path d="M0 0h16v3H0zM0 6h16v3H0zM0 12h16v3H0z"/></g></svg>
+      </hamburger-button>
       <figure>
         <img src="{% static "website/assets/shared/desktop/logo.svg" %}" alt="Audiophile's logo" />
       </figure>
       <ul class="menu">
-        <li><a class="link" href="#">Home</a></li>
-        <li><a class="link" href="#">Headphones</a></li>
-        <li><a class="link" href="#">Speakers</a></li>
-        <li><a class="link" href="#">Earphones</a></li>
+        <li><a class="link" href="/">Home</a></li>
+        <li><a class="link" href="{% url 'products:products' category="headphones" %}">Headphones</a></li>
+        <li><a class="link" href="{% url 'products:products' category="speakers" %}">Speakers</a></li>
+        <li><a class="link" href="{% url 'products:products' category="earphones" %}">Earphones</a></li>
       </ul>
-      <button class="navigation__cart">
-        <img src="{% static "website/assets/shared/desktop/icon-cart.svg" %}" alt="Cart icon" />
-      </button>
+      <cart-button class="link navigation__cart">
+        <svg width="23" height="20" xmlns="http://www.w3.org/2000/svg"><path d="M8.625 15.833c1.132 0 2.054.935 2.054 2.084 0 1.148-.922 2.083-2.054 2.083-1.132 0-2.054-.935-2.054-2.083 0-1.15.922-2.084 2.054-2.084zm9.857 0c1.132 0 2.054.935 2.054 2.084 0 1.148-.922 2.083-2.054 2.083-1.132 0-2.053-.935-2.053-2.083 0-1.15.92-2.084 2.053-2.084zm-9.857 1.39a.69.69 0 00-.685.694.69.69 0 00.685.694.69.69 0 00.685-.694.69.69 0 00-.685-.695zm9.857 0a.69.69 0 00-.684.694.69.69 0 00.684.694.69.69 0 00.685-.694.69.69 0 00-.685-.695zM4.717 0c.316 0 .59.215.658.517l.481 2.122h16.47a.68.68 0 01.538.262c.127.166.168.38.11.579l-2.695 9.236a.672.672 0 01-.648.478H7.41a.667.667 0 00-.673.66c0 .364.303.66.674.66h12.219c.372 0 .674.295.674.66 0 .364-.302.66-.674.66H7.412c-1.115 0-2.021-.889-2.021-1.98 0-.812.502-1.511 1.218-1.816L4.176 1.32H.674A.667.667 0 010 .66C0 .296.302 0 .674 0zm16.716 3.958H6.156l1.797 7.917h11.17l2.31-7.917z" fill-rule="nonzero"/></svg>
+      </cart-button>
     </nav>
   </header>
   <main class="main">
-    <section class="checkout">
-      <form class="checkout__form">
+    <form method="POST" enctype="multipart/form-data" class="checkout">
+      {% csrf_token %}
+      <div class="checkout__form">
         <h2 class="h3">Checkout</h2>
-          {% csrf_token %}
           <div class="billing">
             <h3 class="subtitle emphasis billing__subtitle">Billing Details</h3>
             <div class="field">
@@ -215,17 +184,17 @@
               {{ payment_form.emoney_pin }}
             </div>
           </div>
-      </form>
+      </div>
       <div class="cart cart--summary">
         <div class="cart__header">
-          <p class="h6">CART (3)</p>
+          <p class="h6">Summary</p>
         </div>
         <ul class="cart__list">
           {% for item in order.orderitem_set.all %}
           <li>
             <article class="cart-card">
               <div class="cart-card__picture">
-                <img class="image" src="{% static "products/"|add:item.product.image.desktop %}" %}"/>
+                <img class="image" src="{% static "products/"|add:item.product.image.desktop %}"/>
               </div>
               <div class="cart-card__content">
                 <p class="paragraph paragraph--bold">{{ item.product.name }}</p>
@@ -243,7 +212,7 @@
             <li>
               <div class="paragraph paragraph--space-between">
                 <p class="paragraph paragraph--opacity-50 paragraph--upper">Total</p>
-                <p class="paragraph paragraph--bold">$5,396</p>
+                <p class="paragraph paragraph--bold">$ {{ order.get_cart_total }}</p>
               </div>
             </li>
             <li>
@@ -263,10 +232,10 @@
             <p class="paragraph paragraph--opacity-50 paragraph--upper">Grand Total</p>
             <p class="paragraph paragraph--bold emphasis">$ 5,396</p>
           </div>
-          <button class="button button--wide button--primary">CONTINUE & PAY</button>
+          <input class="button button--wide button--primary" type="submit" value="CONTINUE & PAY" />
         </div>
       </div>
-    </section>
+    </form>
   </main>
   <footer class="footer">
     <nav class="navigation footer__navigation">
@@ -274,10 +243,10 @@
         <img src="{% static "website/assets/shared/desktop/logo.svg" %}" alt="Audiophile's logo" />
       </figure>
       <ul class="menu menu--display">
-        <li><a class="link" href="#">Home</a></li>
-        <li><a class="link" href="#">Headphones</a></li>
-        <li><a class="link" href="#">Speakers</a></li>
-        <li><a class="link" href="#">Earphones</a></li>
+        <li><a class="link" href="/">Home</a></li>
+        <li><a class="link" href="{% url 'products:products' category="headphones" %}">Headphones</a></li>
+        <li><a class="link" href="{% url 'products:products' category="speakers" %}">Speakers</a></li>
+        <li><a class="link" href="{% url 'products:products' category="earphones" %}">Earphones</a></li>
       </ul>
     </nav>
     <div class="footer__content">
