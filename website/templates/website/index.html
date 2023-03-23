@@ -32,11 +32,7 @@
               <p class="paragraph paragraph--bold">{{ item.product.name }}</p>
               <p class="paragraph paragraph--bold paragraph--opacity-50">$ {{ item.product.price }}</p>
             </div>
-            <counter-button id="{{ item.product.id }}" class="counter cart-card__counter">
-              <input id="counter-value-{{ item.product.id }}" min="1" value="1" type="hidden" name="quantity"/>
-              <button type="button" id="decrement-button-{{ item.product.id }}" class="subtitle subtitle--opacity-25 counter__item counter__item--button">-</button>
-              <p id="counter-text-{{ item.product.id }}" class="subtitle counter__number counter__item">{{ item.quantity }}</p>
-              <button type="button" id="increment-button-{{ item.product.id }}" class="subtitle subtitle--opacity-25 counter__item counter__item--button">+</button>
+            <counter-button data-style="/static/website/css/dist/main.css" data-value="{{ item.quantity }}" id="counter" class="counter cart-card__counter">
             </counter-button>
           </article>
         </li>
