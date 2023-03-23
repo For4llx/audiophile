@@ -13,7 +13,8 @@ class IndexView(TemplateView):
         customer, created = Customer.objects.get_or_create(
             device=self.request.COOKIES["device"]
         )
-        context["order"] = Order.objects.get(customer=customer, complete=False)
+        order, created = Order.objects.get_or_create(customer=customer, complete=False)
+        context["order"] = order
 
         return context
 

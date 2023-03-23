@@ -9,7 +9,6 @@ export class CounterButton extends HTMLElement {
         super();
         this.count = this.dataset.value;
         this.attachShadow({ mode: 'open' });
-        console.log(this.dataset.style);
     }
     connectedCallback() {
         this.shadowRoot.appendChild(template.content.cloneNode(true));

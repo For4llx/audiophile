@@ -50,6 +50,8 @@ class ProductDetailView(TemplateView):
         orderItem.quantity = request.POST["quantity"]
         orderItem.save()
 
+        if self.request.POST.get("checkout") == "Checkout":
+            return redirect("/checkout")
         return redirect(f"/{category}/{slug}")
 
     def delete(self, request, slug, category):
