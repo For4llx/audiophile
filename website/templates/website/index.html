@@ -10,7 +10,6 @@
   <link rel="icon" type="image/png" sizes="32x32" href="{% static "website/assets/favicon-32x32.png" %}">
   <link rel="stylesheet" href="{% static 'website/css/dist/main.css' %}">
   <script type="module" src="{% static "website/javascript/main.js" %}" defer></script>
-  <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
 
   <title>Frontend Mentor | Audiophile e-commerce website</title>
 </head>
@@ -188,7 +187,7 @@
       </figure>
       <ul class="menu menu--display">
         <li><a class="link" href="/">Home</a></li>
-        <li><a class="link" href="{% url 'products:products' category="hearphones" %}">Headphones</a></li>
+        <li><a class="link" href="{% url 'products:products' category="headphones" %}">Headphones</a></li>
         <li><a class="link" href="{% url 'products:products' category="speakers" %}">Speakers</a></li>
         <li><a class="link" href="{% url 'products:products' category="earphones" %}">Earphones</a></li>
       </ul>

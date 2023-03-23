@@ -11,9 +11,10 @@ class IndexView(TemplateView):
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         customer, created = Customer.objects.get_or_create(
-            device=self.request.COOKIES["device"]
+            device=self.request.COOKIES.get("device")
         )
-        context["order"] = Order.objects.get(customer=customer, complete=False)
+        order, created = Order.objects.get_or_create(customer=customer, complete=False)
+        context["order"] = order
 
         return context
 
@@ -26,7 +27,7 @@ class ProductView(TemplateView):
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         customer, created = Customer.objects.get_or_create(
-            device=self.request.COOKIES["device"]
+            device=self.request.COOKIES.get("device")
         )
         context["order"] = Order.objects.get(customer=customer, complete=False)
 

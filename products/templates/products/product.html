@@ -15,7 +15,8 @@
 </head>
 <body>
   <div id="cart" class="overlay">
-    <div class="cart">
+    <form method="POST" enctype="multipart/form-data" class="cart">
+      {% csrf_token %}
       <div class="cart__header">
         <p class="h6">CART (3)</p>
         <button class="paragraph paragraph--underline paragraph--opacity-50">Remove all</button>
@@ -42,9 +43,9 @@
           <p class="paragraph paragraph--opacity-50 paragraph--upper">Total</p>
           <p class="paragraph paragraph--bold">$ 5,396</p>
         </div>
-        <button class="button button--wide button--primary">Checkout</button>
+          <input type="submit" name="checkout" class="button button--wide button--primary" value="Checkout"/>
       </div>
-    </div>
+    </form>
   </div>
   <div id="menu" class="overlay overlay--no-padding">
     <div class="background background--white">
@@ -115,7 +116,7 @@
               {% csrf_token %}
               <counter-button data-style="../../static/website/css/dist/main.css" data-value="1" id="counter" class="counter">
               </counter-button>
-              <input class="button button--primary" value="Add to cart" type="submit">
+              <input class="button button--primary" value="Add to cart" type="submit" name="add"/>
             </form>
         </article>
     </article>
@@ -249,7 +250,7 @@
       </figure>
       <ul class="menu menu--display">
         <li><a class="link" href="/">Home</a></li>
-        <li><a class="link" href="{% url 'products:products' category="hearphones" %}">Headphones</a></li>
+        <li><a class="link" href="{% url 'products:products' category="headphones" %}">Headphones</a></li>
         <li><a class="link" href="{% url 'products:products' category="speakers" %}">Speakers</a></li>
         <li><a class="link" href="{% url 'products:products' category="earphones" %}">Earphones</a></li>
       </ul>
