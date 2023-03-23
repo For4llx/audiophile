@@ -31,7 +31,7 @@
               <p class="paragraph paragraph--bold">{{ item.product.name }}</p>
               <p class="paragraph paragraph--bold paragraph--opacity-50">$ {{ item.product.price }}</p>
             </div>
-            <counter-button data-value="{{ item.quantity }}" id="counter" class="counter cart-card__counter">
+            <counter-button data-style="../../static/website/css/dist/main.css" data-value="{{ item.quantity }}" id="counter" class="counter cart-card__counter">
             </counter-button>
           </article>
         </li>
@@ -113,7 +113,7 @@
 
             <form method="POST" enctype="multipart/form-data" class="content__buttons">
               {% csrf_token %}
-              <counter-button data-value="1" id="counter" class="counter">
+              <counter-button data-style="../../static/website/css/dist/main.css" data-value="1" id="counter" class="counter">
               </counter-button>
               <input class="button button--primary" value="Add to cart" type="submit">
             </form>
