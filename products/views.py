@@ -13,7 +13,8 @@ class ProductIndexView(TemplateView):
         customer, created = Customer.objects.get_or_create(
             device=self.request.COOKIES.get("device")
         )
-        context["order"] = Order.objects.get(customer=customer, complete=False)
+        order, created = Order.objects.get_or_create(customer=customer, complete=False)
+        context["order"] = order
         if category == "earphones":
             context["products"] = Product.objects.filter(category="earphones")
             context["category"] = "earphones"
@@ -65,13 +66,3 @@ class ProductDetailView(TemplateView):
                 item.quantity = quantities[index]
                 item.save()
             return redirect("/checkout")
-
-    def delete(self, request, slug, category):
-        customer, created = Customer.objects.get_or_create(
-            device=self.request.COOKIES.get("device")
-        )
-        order = Order.objects.get(customer=customer, complete=False)
-        orderItem = OrderItem.objects.filter(order=order)
-        orderItem.delete()
-
-        return redirect(f"/{category}/{slug}")

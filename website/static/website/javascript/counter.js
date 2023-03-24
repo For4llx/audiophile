@@ -1,7 +1,7 @@
 const template = document.createElement('template');
 template.innerHTML = /* html */`
 <button id="decrement" class="subtitle subtitle--opacity-25 counter__item counter__item--button">-</button>
-<input type="text" id="count" class="subtitle counter__number counter__item"></p>
+<input type="text" id="count" class="background subtitle counter__item counter__item--input"></p>
 <button id="increment" class="subtitle subtitle--opacity-25 counter__item counter__item--button">+</button>
 `;
 export class CounterButton extends HTMLElement {

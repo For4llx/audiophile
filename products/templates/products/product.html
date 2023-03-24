@@ -112,7 +112,7 @@
             </p>
             <p class="h6">$ {{ product.price }}</p>
 
-            <form method="POST" enctype="multipart/form-data" class="content__buttons">
+            <form method="POST" class="content__buttons">
               {% csrf_token %}
               <counter-button data-style="../../static/website/css/dist/main.css" data-value="1" id="counter" class="counter">
               </counter-button>

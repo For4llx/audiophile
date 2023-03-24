@@ -1,4 +1,5 @@
 {% load static %}
+{% load checkout_extras %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -71,6 +72,60 @@
           </li>
         </ul>
       </nav>
+    </div>
+  </div>
+  <div id="confirmation" class="overlay overlay--display overlay--centered">
+    <div class="confirmation">
+      <svg width="64" height="64" xmlns="http://www.w3.org/2000/svg"><g fill="none" fill-rule="evenodd"><circle fill="#D87D4A" cx="32" cy="32" r="32"/><path stroke="#FFF" stroke-width="4" d="m20.754 33.333 6.751 6.751 15.804-15.803"/></g></svg>
+      <h3 class="h3 confirmation__title">
+        <span>Thank you</span>
+        <span>for your order</span>
+      </h3>
+      <p class="paragraph paragraph--opacity-50">You will receive an email confirmation shortly.</p>
+      <div class="confirmation__summary">
+        <div class="confirmation__items">
+          {% with order.orderitem_set.all|first as first_item %}
+          <article class="cart-card">
+            <div class="cart-card__picture">
+              <img class="image" src="{% static "products/"|add:first_item.product.image.desktop %}"/>
+            </div>
+            <div class="cart-card__content">
+              <p class="paragraph paragraph--bold">{{ first_item.product.name }}</p>
+              <p class="paragraph paragraph--bold paragraph--opacity-50">$ {{ first_item.product.price }}</p>
+            </div>
+            <div class="cart-card__counter">
+              <p class="paragraph paragraph--bold paragraph--opacity-50 counter__number">x{{ first_item.quantity }}</p>
+            </div>
+          </article>
+          {% endwith %}
+          <product-list-button id="list-button-plus" class="listButton clicker paragraph paragraph--bold paragraph--opacity-50 confirmation__other">and  {{ order.orderitem_set.all|slice:"1:"|count }} other item(s)</product-list-button>
+            <div id="product-list" class="view-less cart-card--hidden">
+              {% for item in order.orderitem_set.all|slice:"1:" %}
+              <article class="cart-card">
+                <div class="cart-card__picture">
+                  <img class="image" src="{% static "products/"|add:item.product.image.desktop %}"/>
+                </div>
+                <div class="cart-card__content">
+                  <p class="paragraph paragraph--bold">{{ item.product.name }}</p>
+                  <p class="paragraph paragraph--bold paragraph--opacity-50">$ {{ item.product.price }}</p>
+                </div>
+                <div class="cart-card__counter">
+                  <p class="paragraph paragraph--bold paragraph--opacity-50 counter__number">x{{ item.quantity }}</p>
+                </div>
+              </article>
+              {% endfor %}
+              <product-list-button class="listButton clicker paragraph paragraph--bold paragraph--opacity-50 confirmation__other">View less</product-list-button>
+            </div>
+        </div>
+        <div class="paragraph confirmation__total">
+          <p class="paragraph paragraph--white paragraph--opacity-50 paragraph--upper">Grand total</p>
+          <p class="paragraph paragraph--white paragraph--bold">$5,396</p>
+        </div>
+      </div>
+      <form method="POST">
+        {%csrf_token %}
+        <button type="submit" class="button button--wide button--primary">Back to home</button>
+      </form>
     </div>
   </div>
   <header class="header">
