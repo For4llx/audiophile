@@ -12,10 +12,17 @@
         padding-bottom: 0.6rem;
 
         &--button {
+            cursor: pointer;
+
             &:hover {
                 color: var(--primary);
                 opacity: 100%;
             }
+        }
+
+        &--input {
+            text-align: center;
+            width: 2.5rem;
         }
     }
 }

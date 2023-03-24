@@ -22,6 +22,7 @@
 @use "component/overlay";
 @use "component/radio";
 @use "component/input";
+@use "component/clicker";
 
 @use "layout/header";
 @use "layout/confirmation";
@@ -40,6 +41,7 @@
 @use "layout/category";
 @use "layout/about";
 @use "layout/other";
+@use "layout/view-less";
 @use "layout/article";
 @use "layout/information";
 @use "layout/cart";
