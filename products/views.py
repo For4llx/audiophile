@@ -26,6 +26,16 @@ class ProductIndexView(TemplateView):
             context["category"] = "speakers"
         return context
 
+    def post(self, request, category, slug=None):
+        if request.POST.get("remove") == "Remove all":
+            customer, created = Customer.objects.get_or_create(
+                device=self.request.COOKIES.get("device")
+            )
+            order = Order.objects.get(customer=customer, complete=False)
+            order.delete()
+
+            return redirect("/")
+
 
 class ProductDetailView(TemplateView):
     """Display Product Detail"""
@@ -54,7 +64,7 @@ class ProductDetailView(TemplateView):
             orderItem.quantity = request.POST["quantity"]
             orderItem.save()
             return redirect(f"/{category}/{slug}")
-        else:
+        if request.POST.get("checkout") == "Checkout":
             customer, created = Customer.objects.get_or_create(
                 device=self.request.COOKIES.get("device")
             )
@@ -66,3 +76,11 @@ class ProductDetailView(TemplateView):
                 item.quantity = quantities[index]
                 item.save()
             return redirect("/checkout")
+        if request.POST.get("remove") == "Remove all":
+            customer, created = Customer.objects.get_or_create(
+                device=self.request.COOKIES.get("device")
+            )
+            order = Order.objects.get(customer=customer, complete=False)
+            order.delete()
+
+            return redirect("/")

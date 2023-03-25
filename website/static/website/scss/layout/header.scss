@@ -34,6 +34,10 @@
         padding-left: 0;
         padding-right: 0;
 
+        &__navigation {
+            padding: 2rem;
+        }
+
         &--hero {
             background-image: url("/static/website/assets/home/mobile/image-header.jpg");
         }
