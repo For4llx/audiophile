@@ -1,4 +1,6 @@
 {% load static %}
+{% load products_extras %}
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -16,10 +18,11 @@
 </head>
 <body>
   <div id="cart" class="overlay">
-    <div class="cart">
+    <form method="POST" class="cart">
+      {% csrf_token %}
       <div class="cart__header">
-        <p class="h6">CART (3)</p>
-        <button class="paragraph paragraph--underline paragraph--opacity-50">Remove all</button>
+        <p class="h6">CART ({{ order.orderitem_set.all|count }})</p>
+        <input tpye="submit" value="Remove all" name="remove" class="clicker paragraph paragraph--remove paragraph--underline paragraph--opacity-50" type="submit"/>
       </div>
       <ul class="cart__list">
         {% for item in order.orderitem_set.all %}
@@ -41,11 +44,11 @@
       <div class="cart__footer">
         <div class="paragraph paragraph--space-between">
           <p class="paragraph paragraph--opacity-50 paragraph--upper">Total</p>
-          <p class="paragraph paragraph--bold">$ 5,396</p>
+          <p class="paragraph paragraph--bold">$ {{ order.get_cart_total }}</p>
         </div>
         <button class="button button--wide button--primary">Checkout</button>
       </div>
-    </div>
+    </form>
   </div>
   <div id="menu" class="overlay overlay--no-padding">
     <div class="background background--white">
@@ -74,7 +77,7 @@
     </div>
   </div>
   <header class="header">
-    <nav class="navigation navigation--border-bottom">
+    <nav class="navigation navigation--border-bottom header__navigation">
       <hamburger-button class="link navigation__hamburger">
         <svg width="16" height="15" xmlns="http://www.w3.org/2000/svg"><g fill-rule="evenodd"><path d="M0 0h16v3H0zM0 6h16v3H0zM0 12h16v3H0z"/></g></svg>
       </hamburger-button>

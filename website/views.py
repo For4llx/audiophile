@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.views.generic import TemplateView
 from products.models import Customer, Order
 
@@ -18,17 +18,12 @@ class IndexView(TemplateView):
 
         return context
 
+    def post(self, request, category, slug=None):
+        if request.POST.get("remove") == "Remove all":
+            customer, created = Customer.objects.get_or_create(
+                device=self.request.COOKIES.get("device")
+            )
+            order = Order.objects.get(customer=customer, complete=False)
+            order.delete()
 
-class ProductView(TemplateView):
-    """Display Products"""
-
-    template_name = "website/product-list.html"
-
-    def get_context_data(self, **kwargs):
-        context = super().get_context_data(**kwargs)
-        customer, created = Customer.objects.get_or_create(
-            device=self.request.COOKIES.get("device")
-        )
-        context["order"] = Order.objects.get(customer=customer, complete=False)
-
-        return context
+            return redirect("/")
