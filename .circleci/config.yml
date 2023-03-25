@@ -26,13 +26,13 @@ jobs:
             command: |
               sudo curl https://cli-assets.heroku.com/install.sh | sh
               HEROKU_API_KEY=${HEROKU_API_KEY} heroku container:login
-              HEROKU_API_KEY=${HEROKU_API_KEY} heroku container:push -a audiophile web
-              HEROKU_API_KEY=${HEROKU_API_KEY} heroku container:release -a audiophile web
+              HEROKU_API_KEY=${HEROKU_API_KEY} heroku container:push -a romeonobime-audiophile web
+              HEROKU_API_KEY=${HEROKU_API_KEY} heroku container:release -a romeonobime-audiophile web
 workflows:
   version: 2.1
   heroku_deploy:
     jobs:
-      - push_to_docker_hub:
+      - push_to_docker_hub
       - deploy_to_heroku:
           requires:
             - push_to_docker_hub
