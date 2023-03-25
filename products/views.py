@@ -44,7 +44,9 @@ class ProductDetailView(TemplateView):
 
     def get_context_data(self, category, slug, **kwargs):
         context = super().get_context_data(**kwargs)
-        customer = Customer.objects.get(device=self.request.COOKIES.get("device"))
+        customer, created = Customer.objects.get_or_create(
+            device=self.request.COOKIES.get("device")
+        )
         context["order"] = Order.objects.get(customer=customer, complete=False)
         context["product"] = Product.objects.get(slug=slug)
         return context
