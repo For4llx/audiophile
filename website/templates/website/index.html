@@ -45,7 +45,9 @@
           <p class="paragraph paragraph--opacity-50 paragraph--upper">Total</p>
           <p class="paragraph paragraph--bold">$ {{ order.get_cart_total }}</p>
         </div>
-        <button class="button button--wide button--primary">Checkout</button>
+        {% if order.orderitem_set.all %}
+        <input type="submit" name="checkout" class="button button--wide button--primary" value="Checkout"/>
+        {% endif %}
       </div>
     </form>
   </div>
