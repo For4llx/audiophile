@@ -11,7 +11,9 @@ class CheckoutView(TemplateView):
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        customer = Customer.objects.get(device=self.request.COOKIES.get("device"))
+        customer, created = Customer.objects.get_or_create(
+            device=self.request.COOKIES.get("device")
+        )
         context["order"] = Order.objects.get(customer=customer, complete=False)
         context["billing_form"] = BillingForm()
         context["shipping_form"] = ShippingForm()
@@ -36,7 +38,9 @@ class SuccessView(TemplateView):
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        customer = Customer.objects.get(device=self.request.COOKIES.get("device"))
+        customer, created = Customer.objects.get_or_create(
+            device=self.request.COOKIES.get("device")
+        )
         context["order"] = Order.objects.get(customer=customer, complete=False)
         context["billing_form"] = BillingForm()
         context["shipping_form"] = ShippingForm()

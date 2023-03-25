@@ -164,42 +164,20 @@
     <aside class="aside">
         <h3 class="h3">You may also like</h3>
         <ul class="list list--row">
+          {% for product in product.others.all %}
             <li>
                 <article class="other">
                     <picture class="other__picture">
-                        <source class="image" media="(min-width:769px)" srcset="{% static "products/assets/product-xx99-mark-two-headphones/desktop/image-product.jpg" %}" />
-                        <source class="image" media="(min-width:481px)" srcset="{% static "products/assets/product-xx99-mark-two-headphones/tablet/image-product.jpg" %}" />
-                        <source class="image" srcset="{% static "products/assets/product-xx99-mark-two-headphones/mobile/image-product.jpg" %}" />
-                        <img class="image" src="{% static "products/assets/product-xx99-mark-two-headphones/desktop/image-product.jpg" %}" />
+                        <source class="image" media="(min-width:769px)" srcset="{% static "products/"|add:product.image.desktop %}" />
+                        <source class="image" media="(min-width:481px)" srcset="{% static "products/"|add:product.image.tablet %}" />
+                        <source class="image" srcset="{% static "products/"|add:product.image.mobile %}" />
+                        <img class="image" src="{% static "products/"|add:product.image.desktop %}" />
                     </picture>
-                    <h4 class="h5">XX99 Mark II</h4>
-                    <a class="button button--primary" href="#">See product</a>
+                    <h4 class="h5">{{ product.name }}</h4>
+                    <a class="button button--primary" href="{% url 'products:product' category=product.category slug=product.slug %}">See product</a>
                 </article>
             </li>
-            <li>
-              <article class="other">
-                  <picture class="other__picture">
-                      <source class="image" media="(min-width:769px)" srcset="{% static "products/assets/product-xx99-mark-two-headphones/desktop/image-product.jpg" %}" />
-                      <source class="image" media="(min-width:481px)" srcset="{% static "products/assets/product-xx99-mark-two-headphones/tablet/image-product.jpg" %}" />
-                      <source class="image" srcset="{% static "products/assets/product-xx99-mark-two-headphones/mobile/image-product.jpg" %}" />
-                      <img class="image" src="{% static "products/assets/product-xx99-mark-two-headphones/desktop/image-product.jpg" %}" />
-                  </picture>
-                  <h4 class="h5">XX99 Mark II</h4>
-                  <a class="button button--primary" href="#">See product</a>
-              </article>
-          </li>
-          <li>
-            <article class="other">
-                <picture class="other__picture">
-                    <source class="image" media="(min-width:769px)" srcset="{% static "products/assets/product-xx99-mark-two-headphones/desktop/image-product.jpg" %}" />
-                    <source class="image" media="(min-width:481px)" srcset="{% static "products/assets/product-xx99-mark-two-headphones/tablet/image-product.jpg" %}" />
-                    <source class="image" srcset="{% static "products/assets/product-xx99-mark-two-headphones/mobile/image-product.jpg" %}" />
-                    <img class="image" src="{% static "products/assets/product-xx99-mark-two-headphones/desktop/image-product.jpg" %}" />
-                </picture>
-                <h4 class="h5">XX99 Mark II</h4>
-                <a class="button button--primary" href="#">See product</a>
-            </article>
-        </li>
+            {% endfor %}
         </ul>
     </aside>
     <nav class="category">
