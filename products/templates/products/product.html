@@ -45,7 +45,9 @@
           <p class="paragraph paragraph--opacity-50 paragraph--upper">Total</p>
           <p class="paragraph paragraph--bold">$ {{ order.get_cart_total }}</p>
         </div>
+          {% if order.orderitem_set.all %}
           <input type="submit" name="checkout" class="button button--wide button--primary" value="Checkout"/>
+          {% endif %}
       </div>
     </form>
   </div>
@@ -54,19 +56,19 @@
       <nav class="category">
         <ul class="category__menu">
           <li class="category__item">
-            <a href="#" class="category__link category__link--headphones">
+            <a href="{% url 'products:products' category="headphones" %}" class="category__link category__link--headphones">
               <span>Headphones</span>
               <span class="category__button">Shop</span>
             </a>
           </li>
           <li class="category__item">
-            <a href="#" class="category__link category__link--speakers">
+            <a href="{% url 'products:products' category="speakers" %}" class="category__link category__link--speakers">
               <span>Speakers</span>
               <span class="category__button">Shop</span>
             </a>
           </li>
           <li class="category__item category__item--earphones">
-            <a href="#" class="category__link category__link--earphones">
+            <a href="{% url 'products:products' category="earphones" %}" class="category__link category__link--earphones">
               <span>Earphones</span>
               <span class="category__button">Shop</span>
             </a>
