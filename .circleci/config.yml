@@ -1,0 +1,42 @@
+version: 2.1
+orbs:
+  heroku: circleci/heroku@2.0.0
+
+jobs:
+  push_to_docker_hub:
+    machine:
+      image: ubuntu-2204:2022.04.2
+    steps:
+      - checkout
+      - run:
+          name: authentification to docker hub
+          command: echo "$DOCKER_PASS" | docker login --username $DOCKER_USER --password-stdin
+      - run:
+          name: build docker image
+          command: docker build -t nobimeromeo/audiophile:$CIRCLE_SHA1 .
+      - run:
+          name: push docker image
+          command: docker push nobimeromeo/audiophile:$CIRCLE_SHA1
+  deploy_to_heroku:
+      machine: true
+      steps:
+        - checkout
+        - run:
+            name: Build and push Docker image to Heroku
+            command: |
+              sudo curl https://cli-assets.heroku.com/install.sh | sh
+              HEROKU_API_KEY=${HEROKU_API_KEY} heroku container:login
+              HEROKU_API_KEY=${HEROKU_API_KEY} heroku container:push -a audiophile web
+              HEROKU_API_KEY=${HEROKU_API_KEY} heroku container:release -a audiophile web
+workflows:
+  version: 2.1
+  heroku_deploy:
+    jobs:
+      - push_to_docker_hub:
+      - deploy_to_heroku:
+          requires:
+            - push_to_docker_hub
+          filters:
+            branches:
+              only:
+                - main
