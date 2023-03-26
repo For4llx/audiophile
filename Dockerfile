@@ -13,4 +13,6 @@ RUN pip install --no-cache-dir --upgrade -r requirements.txt
 # Copy all local file into "app"
 COPY . /app
 
+RUN python manage.py collectstatic --noinput
+
 CMD gunicorn audiophile.wsgi:application --bind 0.0.0.0:$PORT
