@@ -39,3 +39,4 @@ class IndexView(TemplateView):
             order.delete()
 
             return redirect("/")
+
