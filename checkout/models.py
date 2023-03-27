@@ -23,5 +23,5 @@ class Payment(models.Model):
     payment_method = models.CharField(
         choices=PAYMENT_METHODS, max_length=50, blank=False, default="emoney"
     )
-    emoney_number = models.CharField(max_length=9)
-    emoney_pin = models.CharField(max_length=4)
+    emoney_number = models.CharField(max_length=9, blank=True)
+    emoney_pin = models.CharField(max_length=4, blank=True)

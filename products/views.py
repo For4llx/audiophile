@@ -27,6 +27,18 @@ class ProductIndexView(TemplateView):
         return context
 
     def post(self, request, category, slug=None):
+    	if request.POST.get("checkout") == "Checkout":
+            customer, created = Customer.objects.get_or_create(
+                device=self.request.COOKIES.get("device")
+            )
+            order, created = Order.objects.get_or_create(
+                customer=customer, complete=False
+            )
+            quantities = request.POST.getlist("quantity")
+            for index, item in enumerate(order.orderitem_set.all()):
+                item.quantity = quantities[index]
+                item.save()
+            return redirect("/checkout")
         if request.POST.get("remove") == "Remove all":
             customer, created = Customer.objects.get_or_create(
                 device=self.request.COOKIES.get("device")

@@ -2,6 +2,7 @@ import { CartButton } from "./cart.js";
 import { HamburgerButton } from "./hamburger.js";
 import { CounterButton } from "./counter.js";
 import { ProductListButton } from "./product-list.js";
+import { PaymentCheckBox } from "./payment.js";
 
 function uuidv4() {
     return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function (c) {
@@ -33,3 +34,4 @@ if (device == null || device == undefined) {
 }
 
 document.cookie = `device=${device};domain=;path=/`
+
