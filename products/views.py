@@ -27,7 +27,7 @@ class ProductIndexView(TemplateView):
         return context
 
     def post(self, request, category, slug=None):
-    	if request.POST.get("checkout") == "Checkout":
+        if request.POST.get("checkout") == "Checkout":
             customer, created = Customer.objects.get_or_create(
                 device=self.request.COOKIES.get("device")
             )
