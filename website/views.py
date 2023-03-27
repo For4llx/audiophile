@@ -19,7 +19,7 @@ class IndexView(TemplateView):
         return context
 
     def post(self, request):
-    	if request.POST.get("checkout") == "Checkout":
+        if request.POST.get("checkout") == "Checkout":
             customer, created = Customer.objects.get_or_create(
                 device=self.request.COOKIES.get("device")
             )
@@ -39,4 +39,3 @@ class IndexView(TemplateView):
             order.delete()
 
             return redirect("/")
-

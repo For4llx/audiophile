@@ -62,4 +62,3 @@ class PaymentForm(forms.ModelForm):
                 attrs={"class": "input input--field", "placeholder": "6891"}
             ),
         }
-
