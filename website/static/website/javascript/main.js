@@ -1,8 +1,8 @@
 import { CartButton } from "./cart.js";
 import { HamburgerButton } from "./hamburger.js";
 import { CounterButton } from "./counter.js";
-import { ProductListButton } from "./product-list.js";
 import { PaymentCheckBox } from "./payment.js";
+import { ProductListButton } from "./product-list.js";
 
 function uuidv4() {
     return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function (c) {

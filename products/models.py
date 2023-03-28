@@ -79,7 +79,7 @@ class Product(models.Model):
     features = models.TextField(max_length=1000)
     include = models.ManyToManyField("Include")
     gallery = models.ForeignKey("Gallery", on_delete=models.CASCADE)
-    others = models.ManyToManyField("self", blank=True)
+    others = models.ManyToManyField("self", symmetrical=False, blank=True)
 
     def __str__(self):
         return self.name

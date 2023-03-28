@@ -20,4 +20,3 @@ export class PaymentCheckBox extends HTMLElement {
 }
 
 window.customElements.define("payment-checkbox", PaymentCheckBox);
-
