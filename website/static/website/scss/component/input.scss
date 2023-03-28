@@ -12,13 +12,31 @@
     color: rgba(0, 0, 0, 40%);
     caret-color: var(--primary);
 
+    &--field {
+        &:focus {
+            color: var(--black);
+            border: 1px solid var(--primary);
+        }
+
+        &:not(:placeholder-shown) {
+            border: 2px solid var(--error);
+        }
+
+        &:valid {
+            border: 1px solid #CFCFCF;
+            border-color: #CFCFCF;
+        }
+
+    }
+
 
     &:focus {
         color: var(--black);
         border: 1px solid var(--primary);
     }
 
-    &:invalid {
-        border: 2px solid var(--error);
+    &:valid {
+        border: 1px solid #CFCFCF;
+        border-color: #CFCFCF;
     }
 }

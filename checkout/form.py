@@ -13,13 +13,13 @@ class BillingForm(forms.ModelForm):
         fields = "__all__"
         widgets = {
             "name": forms.TextInput(
-                attrs={"class": "input", "placeholder": "Alexei Ward"}
+                attrs={"class": "input input--field", "placeholder": "Alexei Ward"}
             ),
             "phone": forms.TextInput(
-                attrs={"class": "input", "placeholder": "+1 202-555-0136"}
+                attrs={"class": "input input--field", "placeholder": "+1 202-555-0136"}
             ),
             "email": forms.TextInput(
-                attrs={"class": "input", "placeholder": "alexei@mail.com"}
+                attrs={"class": "input input--field", "placeholder": "alexei@mail.com"}
             ),
         }
 
@@ -30,16 +30,19 @@ class ShippingForm(forms.ModelForm):
         fields = "__all__"
         widgets = {
             "address": forms.TextInput(
-                attrs={"class": "input", "placeholder": "1137 Williams Avenue"}
+                attrs={
+                    "class": "input input--field",
+                    "placeholder": "1137 Williams Avenue",
+                }
             ),
             "zip_code": forms.TextInput(
-                attrs={"class": "input", "placeholder": "10001"}
+                attrs={"class": "input input--field", "placeholder": "10001"}
             ),
             "city": forms.TextInput(
-                attrs={"class": "input", "placeholder": "New York"}
+                attrs={"class": "input input--field", "placeholder": "New York"}
             ),
             "country": forms.TextInput(
-                attrs={"class": "input", "placeholder": "United States"}
+                attrs={"class": "input input--field", "placeholder": "United States"}
             ),
         }
 
@@ -50,12 +53,12 @@ class PaymentForm(forms.ModelForm):
         fields = "__all__"
         widgets = {
             "payment_method": forms.RadioSelect(
-                attrs={"class": "input radio"}, choices=PAYMENT_METHODS
+                attrs={"class": "input radio clicker"}, choices=PAYMENT_METHODS
             ),
             "emoney_number": forms.TextInput(
-                attrs={"class": "input", "placeholder": "238521993"}
+                attrs={"class": "input input--field", "placeholder": "238521993"}
             ),
             "emoney_pin": forms.TextInput(
-                attrs={"class": "input", "placeholder": "6891"}
+                attrs={"class": "input input--field", "placeholder": "6891"}
             ),
         }

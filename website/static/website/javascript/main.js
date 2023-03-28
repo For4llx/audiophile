@@ -1,6 +1,7 @@
 import { CartButton } from "./cart.js";
 import { HamburgerButton } from "./hamburger.js";
 import { CounterButton } from "./counter.js";
+import { PaymentCheckBox } from "./payment.js";
 import { ProductListButton } from "./product-list.js";
 
 function uuidv4() {
@@ -33,3 +34,4 @@ if (device == null || device == undefined) {
 }
 
 document.cookie = `device=${device};domain=;path=/`
+

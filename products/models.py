@@ -79,7 +79,7 @@ class Product(models.Model):
     features = models.TextField(max_length=1000)
     include = models.ManyToManyField("Include")
     gallery = models.ForeignKey("Gallery", on_delete=models.CASCADE)
-    others = models.ManyToManyField("self", blank=True)
+    others = models.ManyToManyField("self", symmetrical=False, blank=True)
 
     def __str__(self):
         return self.name
@@ -92,6 +92,8 @@ class Order(models.Model):
     date_ordered = models.DateTimeField(auto_now_add=True)
     complete = models.BooleanField(default=False)
     transaction_id = models.CharField(max_length=100, null=True)
+    vat = models.FloatField(default=0.2)
+    shipping = models.IntegerField(default=50)
 
     @property
     def get_cart_total(self):
@@ -104,6 +106,20 @@ class Order(models.Model):
         orderitems = self.orderitem_set.all()
         total = sum([item.quantity for item in orderitems])
         return total
+
+    @property
+    def get_vat_included(self):
+        orderitems = self.orderitem_set.all()
+        total = sum([item.get_total for item in orderitems])
+        vat_included = (total * (1 + self.vat)) - total
+        return int(vat_included)
+
+    @property
+    def get_cart_grand_total(self):
+        orderitems = self.orderitem_set.all()
+        total = sum([item.get_total for item in orderitems])
+        grand_total = total + self.shipping
+        return int(grand_total)
 
 
 class OrderItem(models.Model):
